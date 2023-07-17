@@ -1,0 +1,316 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css_block %}
+<link rel="stylesheet" href="{% static 'css/list-parts.css' %}">
+{% endblock %}
+<script src="https://kit.fontawesome.com/4cf7026c74.js" crossorigin="anonymous"></script>
+
+{% block content %}
+
+    <section id="top-headers">
+        <section id="top-header">
+            <ul>
+                <li id="logo">
+                    <img src="img/logo.png" alt="logo">
+                </li>
+                <li id="search-input">gi
+                    <input type="text" placeholder="Search by product, vehicle, or brand">
+                    <div id="search-icon">
+                        <img src="img/search-icon.png" alt="search-icon">
+                    </div>
+                </li>
+                <li id="profile">
+                    <img id="profile-icon" src="img/profile.png" alt="profile">
+                    <div id="cart">
+                        <li>Cart</li>
+                        <li id="basket">
+                            <p>Basket</p>
+                            <p class="id">ID</p>
+                        </li>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="header">
+            <ul>
+                <li>Home</li>
+                <li>CAR BRANDS</li>
+                <li>CAR PARTS</li>
+                <li>TYRES</li>
+                <li>CAR BULBS</li>
+                <li>ENGINE OIL</li>
+                <li>CAR CARE</li>
+                <li>CAR ACCESSORIES</li>
+                <li>TOOLS</li>
+                <li>OFFERS</li>
+            </ul>
+        </section>
+
+        <section id="car-header">
+            <p class="selected-car">Car tyres for THE SELECTED CAR</p>
+            <p class="selected-shop">SELECTED SHOP > CAR ARTICULS > CAR BRAND ARTICUL</p>
+        </section>
+    </section>
+
+    <section id="main-part">
+        <section id="main-part-left">
+            <section id="vehicle-search">
+                <ul>
+                    <li>
+                        <p>SELECT VEHICLE</p>
+                        <img src="img/arrow-down.png" alt="arrow-down">
+                    </li>
+
+                    <li class="select">
+                        <p>NUMBER</p>
+                        <input type="text" placeholder="CAR BRAND">
+                        <p>ARROW DOWN</p>
+                    </li>
+
+                    <li class="select">
+                        <p>NUMBER</p>
+                        <input type="text" placeholder="CAR MODEL">
+                        <p>ARROW DOWN</p>
+                    </li>
+
+                    <li class="select">
+                        <p>NUMBER</p>
+                        <input type="text" placeholder="CAR ENGINE">
+                        <p>ARROW DOWN</p>
+                    </li>
+
+                    <li class="search">
+                        <p>SEARCH IMG</p>
+                        <p>SEARCH</p>
+                    </li>
+                </ul>
+            </section>
+            <section id="registation_field">
+                <ul>
+                    <li>
+                        <p>ENTER YOUR REGISTRATION BELOW</p>
+                    </li>
+
+                    <li>
+                        <div id="registration-box">
+                            <p>BULGARIAN FLAG</p>
+                            <p>CT</p>
+                        </div>
+
+                        <input type="text" placeholder="YOUR REG">
+                    </li>
+
+                    <li class="search">
+                        <p>SEARCH IMG</p>
+                        <p>SEARCH</p>
+                    </li>
+
+                </ul>
+            </section>
+
+            <section id="tyre-search">
+
+                <ul>
+                    <li>
+                        <p>TYRE SEARCH</p>
+                        <p>REFRESH</p>
+                    </li>
+
+                    <li>
+                        <p>PART IMAGE</p>
+                    </li>
+
+                    <li>
+                        <div class="param-box">
+                            <p>Width</p>
+                            <div>
+                                <input type="text" placeholder="All">
+                                <p>ARROW DOWN</p>
+                            </div>
+                        </div>
+
+                        <div class="param-box">
+                            <p>Height</p>
+                            <div>
+                                <input type="text" placeholder="All">
+                                <p>ARROW DOWN</p>
+                            </div>
+                        </div>
+
+                        <div class="param-box">
+                            <p>Diameter</p>
+                            <div>
+                                <input type="text" placeholder="All">
+                                <p>ARROW DOWN</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="search">
+                        <p>SEARCH IMG</p>
+                        <p>SEARCH</p>
+                    </li>
+
+                </ul>
+            </section>
+
+            <section id="payment-methods">
+
+                <ul>
+                    <li>
+                        <p>PAYMENTS METHOD</p>
+                    </li>
+                    <hr>
+                    <li>
+                        <p>PAYMENT WAYS IMAGES</p>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="shop-review">
+                <ul>
+                    <li>
+                        <p>Top Price</p>
+                    </li>
+
+                    <li>
+                        <p>Shipping costs</p>
+                    </li>
+
+                    <li>
+                        <p>Wide choice</p>
+                    </li>
+
+                    <li>
+                        <p>Fast delivery</p>
+                    </li>
+                </ul>
+            </section>
+        </section>
+
+        <section id="main-right-side">
+            <div class="left-side">
+                <ul>
+                    <li>
+
+                        {% for tire in tyres %}
+                            <div class="top-side-left">
+                                <ul>
+                                    <li>
+                                        <p>{{ tire.brand }} Here must write tyre brand</p>
+                                    </li>
+
+                                    <li>
+                                        <p>EAN: {{ tire.ean_num }}</p>
+                                        <p>MPN: {{ tire.mpn_num }}</p>
+                                    </li>
+
+                                    <li>
+                                        <p>STARS</p>
+                                        <p>Please rate this product</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="product-desc">
+
+                            <div class="product-desc-left">
+                                <ul>
+                                    <li>
+                                        <p>{{ tire.image }}</p>
+                                    </li>
+
+                                    <li>
+                                        <div>
+                                            <p>FAST DELIVERY IMG</p>
+                                            <p>FREE DELIVERY</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="product-desc-right">
+
+                                <ul>
+                                    <li>
+                                        <p>PRODUCT NAME</p>
+                                    </li>
+
+                                    <li>
+                                        <div>
+                                            <p>The EU tyre label</p>
+                                            <p>EU TYRE LABEL IMG</p>
+                                        </div>
+                                        <p>SEASON IMG</p>
+                                    </li>
+
+                                    <li>
+                                        <div class="main-product-desc">
+
+                                            <ul>
+                                                <li>
+                                                    <p>Width:</p>
+                                                    <p>{{ tire.width }}</p>
+                                                </li>
+
+                                                <li>
+                                                    <p>Height:</p>
+                                                    <p>{{ tire.height }}</p>
+                                                </li>
+
+                                                <li>
+                                                    <p>Type:</p>
+                                                    <p>{{ tire.type }}</p>
+                                                </li>
+
+                                                <li>
+                                                    <p>Diameter:</p>
+                                                    <p>{{ tire.diameter }}</p>
+                                                </li>
+
+                                                <li>
+                                                    <p>Load index:</p>
+                                                    <p>{{ tire.load_index }}</p>
+                                                </li>
+
+                                                <li>
+                                                    <p>Speed rating:</p>
+                                                    <p>{{ tire.speed_index }}</p>
+                                                </li>
+
+                                                <li>
+                                                    <p>Type:</p>
+                                                    <p>Car</p>
+                                                </li>
+
+                                                <li>
+                                                    <p>Season:</p>
+                                                    <p>{{ tire.season }}</p>
+                                                </li>
+
+                                                <li>
+                                                    <p>Rim Protector:</p>
+                                                    <p>{{ tire.rim_protection }}</p>
+                                                </li>
+
+                                                <li>
+                                                    <p>Run-Flat TYRES:</p>
+                                                    <p>{{ tire.run_flat }}</p>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    {% endfor %}
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </section>
+
+{% endblock content %}

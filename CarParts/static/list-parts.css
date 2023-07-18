@@ -299,8 +299,24 @@
 
 .top-side-left ul li{
     list-style: none;
+    margin-left: 45px;
+}
+
+.top-side-left ul li:nth-child(3){
+    margin-right: 0px;
 }
 
 .top-side-left ul{
     list-style: none;
+}
+
+.left-side ul{
+    list-style: none;
+    margin-left: -25px;
+    align-items: center;
+}
+
+.title-br {
+    font-size: 32px;
+    font-weight: bold;
 }

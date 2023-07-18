@@ -1,0 +1,107 @@
+#top-header{
+    display: flex;
+    background: radial-gradient(circle at -1% 57.5%, rgb(19, 170, 82) 0%, rgb(0, 102, 43) 90%);
+}
+
+#top-header img{
+    width: 150px;
+}
+
+#top-header ul{
+    display: flex;
+    flex-direction: row;
+    padding-left: 160px;
+}
+
+#top-header ul li{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+
+#top-header ul li:nth-child(1){
+    margin-left: 0px;
+}
+
+.fa-magnifying-glass {
+    background: yellow;
+    padding: 2px;
+    width: 2.8rem;
+    height: 2.3rem;
+    justify-content: center;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    border: none;
+}
+
+.fa-user{
+    color: white;
+    margin-left: 49px;
+    font-size: 30px;
+}
+
+.sign-profile{
+    color: white;
+    margin-left: 15px;
+    font-size: 20px;
+}
+
+.fa-cart-shopping{
+    color: white;
+    font-size: 28px;
+    margin-left: 8px;
+}
+
+#basket p{
+    font-size: 20px;
+    color: white;
+}
+
+#top-header ul li:nth-last-child(1){
+    margin-left: 15px;
+}
+
+#search-input input{
+    width: 26rem;
+    height: 2.3rem;
+    margin-left: 90px;
+}
+
+#header{
+    display: flex;
+    background: linear-gradient(to right, #868f96 0%, #596164 100%);
+    justify-content: space-evenly;
+}
+
+#header ul{
+    display: flex;
+}
+
+#header li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 60px;
+}
+
+#header li:nth-child(1){
+    margin-left: -60px;
+}
+
+#header li p{
+    margin-bottom: -10px;
+}
+
+.fa-house{
+    color: white;
+    font-size: 25px;
+}
+
+#car-header{
+    display: flex;
+    flex-direction: column;
+    padding-left: 190px;
+    padding-top: 20px;
+}

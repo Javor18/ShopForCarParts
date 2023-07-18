@@ -1,28 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block css_block %}
-<link rel="stylesheet" href="{% static 'css/list-parts.css' %}">
-{% endblock %}
-<script src="https://kit.fontawesome.com/4cf7026c74.js" crossorigin="anonymous"></script>
-
 {% block content %}
-
     <section id="top-headers">
         <section id="top-header">
             <ul>
                 <li id="logo">
-                    <img src="img/logo.png" alt="logo">
+                    <img src="{% static 'images/shop_logo.jpg' %}">
                 </li>
-                <li id="search-input">gi
+                <li id="search-input">
                     <input type="text" placeholder="Search by product, vehicle, or brand">
                     <div id="search-icon">
-                        <img src="img/search-icon.png" alt="search-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                 </li>
                 <li id="profile">
-                    <img id="profile-icon" src="img/profile.png" alt="profile">
+                    <i class="fa-solid fa-user"></i>
+                    <p class="sign-profile">Sign in</p>
+                </li>
+                <li>
                     <div id="cart">
-                        <li>Cart</li>
+                        <li><i class="fa-solid fa-cart-shopping"></i></li>
                         <li id="basket">
                             <p>Basket</p>
                             <p class="id">ID</p>
@@ -34,16 +31,52 @@
 
         <section id="header">
             <ul>
-                <li>Home</li>
-                <li>CAR BRANDS</li>
-                <li>CAR PARTS</li>
-                <li>TYRES</li>
-                <li>CAR BULBS</li>
-                <li>ENGINE OIL</li>
-                <li>CAR CARE</li>
-                <li>CAR ACCESSORIES</li>
-                <li>TOOLS</li>
-                <li>OFFERS</li>
+                <li>
+                    <p><i class="fa-solid fa-house"></i></p>
+                </li>
+
+                <li>
+                    <p>CAR</p>
+                    <p>BRANDS</p>
+                </li>
+
+                <li>
+                    <p>CAR</p>
+                    <p>PARTS</p>
+                </li>
+
+                <li>
+                    <p>TYRES</p>
+                </li>
+
+                <li>
+                    <p>CAR</p>
+                     <p>BULBS</p>
+                </li>
+
+                <li>
+                    <p>ENGINE</p>
+                    <p>OIL</p>
+                </li>
+
+                <li>
+                    <p>CAR</p>
+                    <p>CARE</p>
+                </li>
+
+                <li>
+                    <p>CAR</p>
+                    <p>ACCESSORIES</p>
+                </li>
+
+                <li>
+                    <p>TOOLS</p>
+                </li>
+
+                <li>
+                    <p>OFFERS</p>
+                </li>
+
             </ul>
         </section>
 

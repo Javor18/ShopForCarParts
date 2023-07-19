@@ -172,6 +172,7 @@
     align-items: center;
     background: linear-gradient(to right, #868f96 0%, #596164 100%);
     justify-content: space-around;
+    color: white;
 }
 
 #registration_field .reg{
@@ -181,6 +182,7 @@
     height: 3rem;
     margin-bottom: 25px;
     margin-top: -31px;
+    color: white;
 }
 
 #registration_field img{
@@ -236,6 +238,7 @@
     align-items: center;
     background: linear-gradient(to right, #868f96 0%, #596164 100%);
     justify-content: space-around;
+    color: white;
 }
 
 #tyre-search ul {
@@ -290,7 +293,6 @@
 
 #main-right-side{
     width: 40rem;
-    border: 1px solid;
 }
 
 .top-side-left ul {
@@ -314,9 +316,128 @@
     list-style: none;
     margin-left: -25px;
     align-items: center;
+    margin-bottom: 31px;
 }
 
 .title-br {
     font-size: 32px;
     font-weight: bold;
+}
+
+.top-side-left ul li:nth-child(2){
+    margin-right: 40px;
+}
+
+.product-desc-img{
+    width: 8rem;
+}
+
+.pr-desc p {
+    margin-left: 10px;
+    margin-top: -10px;
+    color: gray;
+    font-weight: bold;
+}
+
+.pr-desc {
+    width: 12rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.deliv {
+    width: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.deliv img {
+    margin-bottom: -30px;
+    width: 6rem;
+}
+
+.deliv p {
+    font-size: 13px;
+}
+
+.product-desc{
+    display: flex;
+}
+
+.product-desc-right{
+    margin-left: 45px;
+}
+
+.product-name {
+    display: flex;
+    margin-left: 12px;
+}
+
+.product-name p:nth-child(1) {
+    margin-right: 15px;
+}
+
+.product-name p{
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.main-product-desc li{
+    display: flex;
+    justify-content: space-between;
+    height: 2.4rem;
+}
+
+.main-product-desc ul{
+    width: 18rem;
+}
+
+.main-product-desc li:nth-child(1),
+.main-product-desc li:nth-child(3),
+.main-product-desc li:nth-child(5),
+.main-product-desc li:nth-child(7),
+.main-product-desc li:nth-child(9){
+    background: lightgray;
+}
+
+.left-side{
+    border: 1px solid lightgray;
+    margin: 26px;
+}
+
+#payment-methods li:nth-child(1){
+    border-top: 5px solid lightgreen;
+}
+
+#payment-methods ul{
+    list-style: none;
+    margin-left: -39px;
+}
+
+#payment-methods li:nth-child(1) p {
+    border-left: 3px solid lightgreen;
+    font-size: 20px;
+    padding-left: 27px;
+    font-weight: bold;
+}
+
+#payment-methods hr{
+    width: 18rem;
+}
+
+#payment-methods img{
+    width: 7rem;
+    /*height: 4rem;*/
+}
+
+#payment-methods div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+    margin-left: 30px;
+    margin-top: 30px;
 }

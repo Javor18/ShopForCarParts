@@ -195,11 +195,17 @@
 
                 <ul>
                     <li>
-                        <p>PAYMENTS METHOD</p>
+                        <p>PAYMENT METHODS</p>
                     </li>
                     <hr>
                     <li>
-                        <p>PAYMENT WAYS IMAGES</p>
+                        <div>
+                            <img src="{% static 'images/payment-methods/paypal.png' %}">
+                            <img src="{% static 'images/payment-methods/visa.png' %}">
+                            <img src="{% static 'images/payment-methods/mastercard.png' %}">
+                            <img src="{% static 'images/payment-methods/bank-transfer.png' %}">
+
+                        </div>
                     </li>
                 </ul>
             </section>
@@ -227,124 +233,126 @@
 
         <section id="main-right-side">
             {% for tire in tyres %}
-            <div class="left-side">
-                <ul>
-                    <li>
-                        <div class="top-side-left">
-                            <ul>
-                                <li>
-                                    <p class="title-br">{{ tire.brand }}</p>
-                                </li>
+                <div class="left-side">
+                    <ul>
+                        <li>
+                            <div class="top-side-left">
+                                <ul>
+                                    <li>
+                                        <p class="title-br">{{ tire.brand }}</p>
+                                    </li>
 
-                                <li>
-                                    <p>EAN: {{ tire.ean_num }}</p>
-                                    <p>MPN: {{ tire.mpn_num }}</p>
-                                </li>
+                                    <li>
+                                        <p>EAN: {{ tire.ean_num }}</p>
+                                        <p>MPN: {{ tire.mpn_num }}</p>
+                                    </li>
 
-                                <li>
-                                    <p>STARS</p>
-                                    <p>Please rate this product</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                                    <li>
+                                        <p>STARS</p>
+                                        <p>Please rate this product</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
 
-                    <li class="product-desc">
+                        <li class="product-desc">
 
-                        <div class="product-desc-left">
-                            <ul>
-                                <li>
-                                    <p>{{ tire.image }}</p>
-                                </li>
+                            <div class="product-desc-left">
+                                <ul>
+                                    <li class="pr-desc">
+                                        <p><img class="product-desc-img" src="{% static 'images/no-tyre.jpg' %}"></p>
+                                        <p>PHOTO IS NOT</p>
+                                        <p>AVAILABLE</p>
+                                    </li>
 
-                                <li>
-                                    <div>
-                                        <p>FAST DELIVERY IMG</p>
-                                        <p>FREE DELIVERY</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                                    <li>
+                                        <div class="deliv">
+                                            <p><img class="product-desc-img" src="{% static 'images/delivery-img.jpg' %}"></p>
+                                            <p>FREE DELIVERY</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
 
-                        <div class="product-desc-right">
+                            <div class="product-desc-right">
 
-                            <ul>
-                                <li>
-                                    <p>PRODUCT NAME</p>
-                                </li>
+                                <ul>
+                                    <li class="product-name">
+                                        <p>{{tire.brand}}</p>
+                                        <p>{{tire.model}}</p>
+                                    </li>
 
-                                <li>
-                                    <div>
-                                        <p>The EU tyre label</p>
-                                        <p>EU TYRE LABEL IMG</p>
-                                    </div>
-                                    <p>SEASON IMG</p>
-                                </li>
+<!--                                    <li>-->
+<!--                                        <div>-->
+<!--                                            <p>The EU tyre label</p>-->
+<!--                                            <p>EU TYRE LABEL IMG</p>-->
+<!--                                        </div>-->
+<!--                                        <p>SEASON IMG</p>-->
+<!--                                    </li>-->
 
-                                <li>
-                                    <div class="main-product-desc">
+                                    <li>
+                                        <div class="main-product-desc">
 
-                                        <ul>
-                                            <li>
-                                                <p>Width:</p>
-                                                <p>{{ tire.width }}</p>
-                                            </li>
+                                            <ul>
+                                                <li>
+                                                    <p>Width:</p>
+                                                    <p>{{ tire.width }}</p>
+                                                </li>
 
-                                            <li>
-                                                <p>Height:</p>
-                                                <p>{{ tire.height }}</p>
-                                            </li>
+                                                <li>
+                                                    <p>Height:</p>
+                                                    <p>{{ tire.height }}</p>
+                                                </li>
 
-                                            <li>
-                                                <p>Type:</p>
-                                                <p>{{ tire.type }}</p>
-                                            </li>
+                                                <li>
+                                                    <p>Type:</p>
+                                                    <p>{{ tire.type }}</p>
+                                                </li>
 
-                                            <li>
-                                                <p>Diameter:</p>
-                                                <p>{{ tire.diameter }}</p>
-                                            </li>
+                                                <li>
+                                                    <p>Diameter:</p>
+                                                    <p>{{ tire.diameter }}</p>
+                                                </li>
 
-                                            <li>
-                                                <p>Load index:</p>
-                                                <p>{{ tire.load_index }}</p>
-                                            </li>
+                                                <li>
+                                                    <p>Load index:</p>
+                                                    <p>{{ tire.load_index }}</p>
+                                                </li>
 
-                                            <li>
-                                                <p>Speed rating:</p>
-                                                <p>{{ tire.speed_index }}</p>
-                                            </li>
+                                                <li>
+                                                    <p>Speed rating:</p>
+                                                    <p>{{ tire.speed_index }}</p>
+                                                </li>
 
-                                            <li>
-                                                <p>Type:</p>
-                                                <p>Car</p>
-                                            </li>
+                                                <li>
+                                                    <p>Type:</p>
+                                                    <p>Car</p>
+                                                </li>
 
-                                            <li>
-                                                <p>Season:</p>
-                                                <p>{{ tire.season }}</p>
-                                            </li>
+                                                <li>
+                                                    <p>Season:</p>
+                                                    <p>{{ tire.season }}</p>
+                                                </li>
 
-                                            <li>
-                                                <p>Rim Protector:</p>
-                                                <p>{{ tire.rim_protection }}</p>
-                                            </li>
+                                                <li>
+                                                    <p>Rim Protector:</p>
+                                                    <p>{{ tire.rim_protection }}</p>
+                                                </li>
 
-                                            <li>
-                                                <p>Run-Flat TYRES:</p>
-                                                <p>{{ tire.run_flat }}</p>
-                                            </li>
+                                                <li>
+                                                    <p>Run-Flat TYRES:</p>
+                                                    <p>{{ tire.run_flat }}</p>
+                                                </li>
 
-                                        </ul>
-                                    </div>
-                                {% endfor %}
+                                            </ul>
+                                        </div>
                             </li>
                         </ul>
                     </div>
-
                     </li>
                 </ul>
             </div>
+            {% endfor %}
         </section>
     </section>
 

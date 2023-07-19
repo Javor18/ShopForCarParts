@@ -4,14 +4,15 @@ from CarParts.models import Tires
 
 # Create your views here.
 
-class Test(TemplateView):
-    template_name = 'test.html'
+# class Test(TemplateView):
+#     template_name = 'test.html'
 
 class TyreListView(ListView):
     model = Tires
     template_name = 'list-parts.html'
     context_object_name = 'tyres'
     ordering = ['-id']
+    paginate_by = 2
 
 class TyreDetailView(DetailView):
     model = Tires

@@ -23,7 +23,7 @@ from django.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.TyreListView.as_view(), name='main'),
-    path('tyres/<int:pk>/', views.TyreDetailView.as_view(), name='tyre_detail'),
+    path('tyres/<int:pk>', views.TyreDetailView.as_view(), name='tyres'),
     # path('login/', views.LoginView.as_view(), name='login'),
     path('accounts/', include('django.contrib.auth.urls')),
 ]

@@ -415,6 +415,7 @@
 #payment-methods ul{
     list-style: none;
     margin-left: -39px;
+    margin-top: 32px;
 }
 
 #payment-methods li:nth-child(1) p {
@@ -440,4 +441,102 @@
     align-items: center;
     margin-left: 30px;
     margin-top: 30px;
+}
+
+#shop-review li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 7px;
+}
+
+#shop-review img{
+    width: 4rem;
+    margin-right: 28px;
+}
+
+#shop-review p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#shop-review{
+    margin-top: 35px;
+}
+
+#shop-review p:nth-child(1){
+    font-size: 30px;
+    font-weight: initial;
+    border-left: 3px solid lightgreen;
+    padding-left: 33px;
+    margin-left: -39px;
+    margin-bottom: 22px;
+}
+
+#shop-review ul{
+    border-top: 5px solid lightgreen;
+}
+
+#shop-review hr{
+    width: 16rem;
+    margin-right: 57px;
+    margin-bottom: 30px;
+}
+
+#price-section ul{
+    border: 1px solid lightgray;
+    margin-top: 26px;
+    margin-left: -26px;
+    border-left: none;
+    height: 41.3rem;
+    width: 11.5rem;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    align-items: center;
+}
+
+#price-section ul li:nth-child(1){
+    margin-bottom: 10px;
+    margin-top: 170px;
+}
+
+#price-section .price{
+    display: flex;
+    gap: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#price-section li{
+    display: flex;
+    gap: 12px;
+}
+
+#price-section .fa-arrow-right,
+#price-section .fa-arrow-left{
+    border: 1px solid lightgray;
+    padding: 7px;
+    cursor: pointer;
+}
+
+
+#price-section li:nth-child(3){
+    gap: 0px;
+}
+
+#price-section li:nth-child(3) p:nth-child(2){
+    border: 1px solid lightgray;
+    padding: 5.9px;
+}
+
+#price-section .add-to-cart button{
+    display: flex;
+    gap: 19px;
+    width: 10rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+    border: none;
+    background: red;
+    color: white;
 }

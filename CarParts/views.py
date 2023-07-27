@@ -12,9 +12,24 @@ class TyreListView(ListView):
     template_name = 'list-parts.html'
     context_object_name = 'tyres'
     ordering = ['-id']
-    paginate_by = 2
+    paginate_by = 3
+
 
 class TyreDetailView(DetailView):
     model = Tires
-    template_name = 'detail-tyres.html'
+    template_name = 'detail-parts.html'
     context_object_name = 'tyre'
+    id = 'tyre_id'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tyres'] = Tires.objects.all()
+        return context
+
+    def get_queryset(self):
+        return Tires.objects.all()
+
+    def get_object(self, queryset=None):
+        return Tires.objects.get(id=self.kwargs['pk'])
+
+

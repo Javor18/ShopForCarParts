@@ -212,19 +212,25 @@
 
             <section id="shop-review">
                 <ul>
+                    <p>Auto parts shop</p>
+                    <hr>
                     <li>
+                         <img src="{% static 'images/review-icons/top-price.jpg' %}">
                         <p>Top Price</p>
                     </li>
 
                     <li>
+                        <img src="{% static 'images/review-icons/Fast_Delivery.jpg' %}">
                         <p>Shipping costs</p>
                     </li>
 
                     <li>
+                        <img src="{% static 'images/review-icons/choices.jpg' %}">
                         <p>Wide choice</p>
                     </li>
 
                     <li>
+                        <img src="{% static 'images/delivery-img.jpg' %}">
                         <p>Fast delivery</p>
                     </li>
                 </ul>
@@ -233,6 +239,7 @@
 
         <section id="main-right-side">
             {% for tire in tyres %}
+            <a href="{% url 'tyre_detail' tyre.id %}">
                 <div class="left-side">
                     <ul>
                         <li>
@@ -352,8 +359,48 @@
                     </li>
                 </ul>
             </div>
+            </a>
+            {% endfor %}
+        </section>
+        <section id="price-section">
+            {% for tire in tyres %}
+            <ul>
+
+                <li>
+                    <div class="price">
+                        <p>€</p>
+                        <p>{{ tire.price }}</p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="quantity">
+                        <li>
+                            <p><i class="fa-solid fa-arrow-right"></i></p>
+                            <p></p>
+                            <p><i class="fa-solid fa-arrow-left"></i></p>
+                        </li>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="add-to-cart">
+                        <button>
+                            <p><i class="fa-solid fa-shopping-cart"></i></p>
+                            <p>ADD TO CART</p>
+                        </button>
+                    </div>
+                </li>
+
+            </ul>
             {% endfor %}
         </section>
     </section>
+
+    <script>
+        function add_quantyty() {
+            let quantity = 1;
+        }
+    </script>
 
 {% endblock content %}

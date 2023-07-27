@@ -1,4 +1,12 @@
-<section id="main-right-side">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <section id="main-right-side">
+            <a href="{% url 'tyre_detail' tyre.id %}">
                 <div class="left-side">
                     <ul>
                         <li>
@@ -118,6 +126,7 @@
                     </li>
                 </ul>
             </div>
+            </a>
         </section>
         <section id="price-section">
             <ul>
@@ -133,7 +142,7 @@
                     <div class="quantity">
                         <li>
                             <p><i class="fa-solid fa-arrow-right"></i></p>
-                            <p id="item-quantity">QUANTITY</p>
+                            <p></p>
                             <p><i class="fa-solid fa-arrow-left"></i></p>
                         </li>
                     </div>
@@ -150,3 +159,6 @@
 
             </ul>
         </section>
+
+</body>
+</html>

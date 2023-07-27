@@ -13,6 +13,7 @@ class TyreListView(ListView):
     context_object_name = 'tyres'
     ordering = ['-id']
     paginate_by = 3
+    tyres = Tires.objects.all()
 
 
 class TyreDetailView(DetailView):

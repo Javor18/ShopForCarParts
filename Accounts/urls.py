@@ -19,11 +19,11 @@ from django.urls import path
 from CarParts import views
 # from Accounts import views
 from django.urls import include
+from Accounts import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.TyreListView.as_view(), name='main'),
-    path('tyres/<str:name>', views.TyreDetailView.as_view(), name='tyres'),
-    # path('login/', views.LoginView.as_view(), name='login'),
-    path('accounts/', include('Accounts.urls')),
+    path('register/', views.RegisterView.as_view(), name='register'),
+    path('login/', views.LoginView.as_view(), name='login'),
+    path('logout/', views.LogoutView.as_view(), name='logout'),
+
 ]

@@ -1,8 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
-# from django.contrib.auth.views import RegisterView
-
+from django.views.generic import FormView
+from django.urls import reverse_lazy
+# from Accounts.forms import RegistrationForm
 # Create your views here.
+
+class RegisterView(FormView):
+    template_name = 'register.html'
+    # form_class = RegistrationForm
+    success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
 
 class LoginView(LoginView):
     template_name = 'login.html'

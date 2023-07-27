@@ -29,5 +29,8 @@ class Tires(models.Model):
 
     season = models.CharField(max_length=100)
 
+    def __repr__(self):
+        return f"{self.brand} {self.model} {self.price}"
+
     # created_at = models.DateTimeField(auto_now_add=True)
     # updated_at = models.DateTimeField(auto_now=True)

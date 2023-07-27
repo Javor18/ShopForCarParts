@@ -29,6 +29,7 @@ class Tires(models.Model):
 
     season = models.CharField(max_length=100)
 
+
     def __repr__(self):
         return f"{self.brand} {self.model} {self.price}"
 

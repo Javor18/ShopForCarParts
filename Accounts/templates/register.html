@@ -2,15 +2,15 @@
 
 
 <form
-        action="{% url 'register user' %}"
+        action="{% url 'register' %}"
         method="post">
 
-    {{ form }}
+    {{ form.as_p }}
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Register</button>
         or
-        <a href="{% url 'login user' %}">Login</a>
+        <a href="{% url 'login' %}">Login</a>
     </div>
 
     {% csrf_token %}

@@ -9,4 +9,7 @@ class RegisterUserView(views.CreateView):
     template_name = 'register.html'
     form_class = auth_forms.UserCreationForm
 
-    def post(self, request, *args, **kwargs):
+    # def post(self, request, *args, **kwargs):
+
+class LoginUserView(views.View):
+    pass

@@ -21,5 +21,6 @@ from django.urls import include
 
 urlpatterns = [
     path('', views.TyreListView.as_view(), name='main'),
-    path('tyres/<str:name>', views.TyreDetailView.as_view(), name='tyres'),
+    # path('tyres/<str:name>', views.TyreDetailView.as_view(), name='tyre_detail'),
+    path('tyres/<int:pk>', views.TyreDetailView.as_view(), name='tyre_detail'),
 ]

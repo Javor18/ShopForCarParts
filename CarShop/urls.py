@@ -31,5 +31,5 @@ from django.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('CarParts.urls')),
-    path('accounts/', include('Accounts.urls')),
+    path('auth/', include('Accounts.urls')),
 ]

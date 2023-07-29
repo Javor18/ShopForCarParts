@@ -540,3 +540,8 @@
     background: red;
     color: white;
 }
+
+#main-right-side a {
+    text-decoration: none;
+    color: inherit;
+}

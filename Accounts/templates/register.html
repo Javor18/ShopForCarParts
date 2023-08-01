@@ -1,8 +1,8 @@
-{{request.user}}
-
+{% extends 'auth_base.html' %}
+{% block content %}
 
 <form
-        action="{% url 'register' %}"
+        action="{% url 'register_user' %}"
         method="post">
 
     {{ form.as_p }}
@@ -10,9 +10,11 @@
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Register</button>
         or
-        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'login_user' %}">Login</a>
     </div>
 
     {% csrf_token %}
 
 </form>
+
+{% endblock %}

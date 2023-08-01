@@ -1,6 +1,7 @@
-# from django.db import models
-# from django.contrib.auth.models import AbstractUser
-# from django.contrib.auth import get_user_model
+from django.db import models
+from django.contrib.auth.models import AbstractUser, AbstractBaseUser
+from django.contrib.auth import models as auth_models
+from django.contrib.auth import get_user_model
 #
 # # Create your models here.
 #
@@ -18,3 +19,11 @@
 #
 #     def __str__(self):
 #         return self.username
+
+class AppUser(auth_models.AbstractBaseUser):
+
+    email = models.EmailField(
+        unique=True,
+        null=False,
+        blank=False,
+    )

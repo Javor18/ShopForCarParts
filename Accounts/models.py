@@ -1,29 +1,63 @@
+from django.contrib.auth.hashers import make_password
 from django.db import models
 from django.contrib.auth.models import AbstractUser, AbstractBaseUser
 from django.contrib.auth import models as auth_models
 from django.contrib.auth import get_user_model
+
+from Accounts import apps
+
+
 #
 # # Create your models here.
 #
-# class User(AbstractUser):
-#
-#     is_customer = models.BooleanField(default=False)
-#     is_mechanic = models.BooleanField(default=False)
-#     is_admin = models.BooleanField(default=False)
-#     is_manager = models.BooleanField(default=False)
-#     is_salesman = models.BooleanField(default=False)
-#     is_delivery = models.BooleanField(default=False)
-#     is_accountant = models.BooleanField(default=False)
-#     is_owner = models.BooleanField(default=False)
-#
-#
-#     def __str__(self):
-#         return self.username
+
+
+class UserManager(auth_models.BaseUserManager):
+    use_in_migrations = True
+
+    def _create_user(self, email, password, **extra_fields):
+
+        if not email:
+            raise ValueError('The given username must be set')
+
+        user = self.model(email=email, **extra_fields)
+        user.password = make_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_user(self, email, password=None, **extra_fields):
+
+        extra_fields.setdefault('is_staff', False)
+        extra_fields.setdefault('is_superuser', False)
+
+        return self._create_user(email, password, **extra_fields)
+
+    def create_superuser(self, email, password=None, **extra_fields):
+
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True')
+
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True')
+
+        return self._create_user(email, password, **extra_fields)
+
 
 class AppUser(auth_models.AbstractBaseUser):
+
+    USERNAME_FIELD = 'email'
+
+    objects = UserManager()
 
     email = models.EmailField(
         unique=True,
         null=False,
         blank=False,
+    )
+
+    is_staff = models.BooleanField(
+        default=False,
     )

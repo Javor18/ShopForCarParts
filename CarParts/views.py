@@ -19,7 +19,7 @@ class TyreListView(ListView):
 class TyreDetailView(DetailView):
     model = Tires
     template_name = 'detail-parts.html'
-    context_object_name = 'tyre'
+    context_object_name = 'tire'
     id = 'tyre_id'
 
     def get_context_data(self, **kwargs):

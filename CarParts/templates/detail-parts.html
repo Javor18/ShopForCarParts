@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="{% static 'list-parts.css' %}" rel="stylesheet">
 </head>
 <body>
         <section id="main-right-side">
-            <a href="{% url 'tyre_detail' tyre.id %}">
                 <div class="left-side">
                     <ul>
                         <li>

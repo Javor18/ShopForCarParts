@@ -3,6 +3,9 @@ from django.db import models
 
 # Create your models here.
 
+
+
+
 class Tires(models.Model):
 
     brand = models.CharField(max_length=100)
@@ -29,6 +32,21 @@ class Tires(models.Model):
     run_flat = models.BooleanField()
 
     season = models.CharField(max_length=100)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(args, kwargs)
+        self.object_name_constant = "Tires"
+
+    def get_verbose_name(self):
+        return self.object_name_constant
+
+    def __str__(self):
+        return self.get_verbose_name()
+
+    class Meta:
+        # I want the verbose name to be equal to brand name
+        verbose_name = "Tires"
+        verbose_name_plural = "Tires"
 
 
     def __repr__(self):

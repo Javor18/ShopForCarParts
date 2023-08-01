@@ -70,6 +70,9 @@ class RegisterUserView(views.CreateView):
 
         return result
 
+    def form_invalid(self, form):
+        return redirect('login_user')
+
 
 class LoginUserView(auth_views.LoginView):
     template_name = 'login.html'

@@ -129,7 +129,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Default URL to redirect **after successful login**
-LOGIN_REDIRECT_URL = reverse_lazy('register_user')
+LOGIN_REDIRECT_URL = reverse_lazy('main')
 
 # Default URL to redirect for **'login required''**
 LOGIN_URL = reverse_lazy('login_user')

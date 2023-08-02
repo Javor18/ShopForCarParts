@@ -3,9 +3,6 @@ from django.db import models
 
 # Create your models here.
 
-
-
-
 class Tires(models.Model):
 
     brand = models.CharField(max_length=100)
@@ -43,14 +40,13 @@ class Tires(models.Model):
     def __str__(self):
         return self.get_verbose_name()
 
+    def __repr__(self):
+        return f"{self.brand} {self.model} {self.price}"
+
     class Meta:
         # I want the verbose name to be equal to brand name
         verbose_name = "Tires"
         verbose_name_plural = "Tires"
-
-
-    def __repr__(self):
-        return f"{self.brand} {self.model} {self.price}"
 
     # created_at = models.DateTimeField(auto_now_add=True)
     # updated_at = models.DateTimeField(auto_now=True)

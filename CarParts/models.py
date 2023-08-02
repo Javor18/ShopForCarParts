@@ -20,23 +20,21 @@ class Tyre(models.Model):
 
     width = models.IntegerField()
     height = models.IntegerField()
-    type = models.CharField(max_length=100, null=True, blank=True)
     diameter = models.IntegerField()
     load_index = models.IntegerField()
+
+    type = models.CharField(max_length=100, null=True, blank=True)
 
     speed_index = models.CharField(max_length=100)
     rim_protection = models.BooleanField()
     run_flat = models.BooleanField()
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(args, kwargs)
-        self.object_name_constant = "Tires"
-
-    def get_verbose_name(self):
-        return self.object_name_constant
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(args, kwargs)
+    #     self.object_name_constant = "Tires"
 
     def __str__(self):
-        return self.get_verbose_name()
+        return f"{self.brand} {self.model} {self.price}$"
 
     def __repr__(self):
         return f"{self.brand} {self.model} {self.price}"

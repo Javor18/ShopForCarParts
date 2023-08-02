@@ -13,14 +13,20 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                 </li>
-<!--                I want to link this page to the auth page in Accounts app. My url for auth page is: path('accounts/', include('Accounts.urls')).-->
-<!--                It is in CarShop-->
-                <a href="{% url 'login_user' %}">
                     <li id="profile">
                         <i class="fa-solid fa-user"></i>
-                        <p class="sign-profile">Sign in</p>
+                        {% if user.is_authenticated %}
+                            <div class="logout-profile">
+                                <p>{{user.username}}</p>
+                                <p><a class="sign-type" href="{% url 'logout_user' %}">Logout</a><p>
+                            </div>
+
+                        {% else %}
+                            <div class="sign-profile">
+                                <p><a class="sign-type" href="{% url 'login_user' %}">Sign in</a></p>
+                            </div>
+                        {% endif %}
                     </li>
-                </a>
                 <li>
                     <div id="cart">
                         <li><i class="fa-solid fa-cart-shopping"></i></li>
@@ -404,6 +410,16 @@
     <script>
         function add_quantyty() {
             let quantity = 1;
+        }
+
+        function SingIn{
+            if (user.is_authenticated){
+                let sign_in = "Log out";
+                sign_in.href = "{% url 'logout_user' %}";
+            } else {
+                let sign_in = "Sign in";
+                sign_in.href = "{% url 'login_user' %}";
+            }
         }
     </script>
 

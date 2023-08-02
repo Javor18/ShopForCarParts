@@ -3,6 +3,28 @@
     background: radial-gradient(circle at -1% 57.5%, rgb(19, 170, 82) 0%, rgb(0, 102, 43) 90%);
 }
 
+#top-header a {
+    display: flex;
+}
+
+#top-header .sign-profile{
+    display: flex;
+}
+
+#top-header .logout-profile a{
+    text-decoration: none;
+    color: red;
+    font-size: 21px;
+    margin-left: 15px;
+}
+
+#top-header .sign-profile a{
+    text-decoration: none;
+    color: red;
+    font-size: 24px;
+    margin-left: 8px;
+}
+
 #top-header img{
     width: 150px;
 }

@@ -134,7 +134,7 @@ LOGIN_REDIRECT_URL = reverse_lazy('main')
 # Default URL to redirect for **'login required''**
 LOGIN_URL = reverse_lazy('login_user')
 
-LOGOUT_REDIRECT_URL = reverse_lazy('login_user')
+LOGOUT_REDIRECT_URL = reverse_lazy('main')
 
 
 # AUTH_USER_MODEL = 'Accounts.User'

@@ -2,6 +2,6 @@ from django.contrib import admin
 
 # Register your models here.
 
-from CarParts.models import Tires
+from CarParts.models import Tyre
 
-admin.site.register(Tires)
+admin.site.register(Tyre)

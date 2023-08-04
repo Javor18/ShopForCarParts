@@ -5,4 +5,4 @@ from django.views.generic import TemplateView
 
 class PrivacyView(TemplateView):
 
-    template_name = 'privacy.html'
+    template_name = 'privacy_policy.html'

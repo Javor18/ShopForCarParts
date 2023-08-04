@@ -393,7 +393,7 @@
 
                 <li>
                     <div class="add-to-cart">
-                        <button>
+                        <button data-product="{{ tire.id }}" data-action="add" class="add-to-cart-btn update-cart" type="button">
                             <p><i class="fa-solid fa-shopping-cart"></i></p>
                             <p>ADD TO CART</p>
                         </button>
@@ -446,6 +446,50 @@
                 quantity.value = quantityValue;
             }
         })
+
+        /////////// Add to Cart ///////////
+
+        let user = '{{request.user}}'
+
+            let updateBtns = document.getElementsByClassName('add-to-cart-btn')
+
+
+            for (let i = 0; i < updateBtns.length; i++) {
+
+                updateBtns[i].addEventListener('click', function (){
+                    let productId = this.dataset.product
+                    let action = this.dataset.action
+                    let quantity = document.getElementById('quantity').value
+                    console.log('productId:', productId, 'Action:', action, 'Quantity:', quantity)
+
+                    console.log('User:', user)
+
+                    updateUserOrder(productId, action, quantity)
+                })
+            }
+
+            function updateUserOrder(productId, action, quantity){
+
+                    console.log('User is authenticated, sending data...')
+
+
+                    var url = '/update_item/'
+
+                    fetch(url, {
+                        method:'POST',
+                        headers:{
+                            'Content-Type':'application/json',
+                            'X-CSRFToken':csrftoken,
+                        },
+                        body:JSON.stringify({'productId':productId, 'action':action, 'quantity': quantity})
+                    })
+                        .then((response) => {
+                            return response.json();
+                        })
+                        .then((data) => {
+                            location.reload()
+                        });
+                }
 
     </script>
 

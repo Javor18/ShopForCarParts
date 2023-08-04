@@ -1,6 +1,7 @@
 from django.core.mail import send_mail
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, TemplateView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, TemplateView, FormView
 from CarParts.models import Tyre
 from CarParts.forms import ContactForm
 from django import forms
@@ -55,3 +56,18 @@ def contact_view(request):
     form = ContactForm()
 
     return render(request, 'contact_form.html', {"form": form})
+
+class ContactFormView(FormView):
+
+    form_class = ContactForm
+    template_name = 'contact_form.html'
+    success_url = reverse_lazy('main')
+
+    def form_valid(self, form):
+        send_mail(
+            subject=form.cleaned_data['subject'],
+            message=form.cleaned_data['message'],
+            from_email=form.cleaned_data['from_email'],
+            recipient_list=[form.cleaned_data['email']],
+        )
+        return super().form_valid(form)

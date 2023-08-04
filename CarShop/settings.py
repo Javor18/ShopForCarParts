@@ -140,6 +140,5 @@ LOGOUT_REDIRECT_URL = reverse_lazy('main')
 
 # AUTH_USER_MODEL = 'Accounts.User'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = "CarParts/app-messages"

@@ -28,13 +28,15 @@
                         {% endif %}
                     </li>
                 <li>
-                    <div id="cart">
-                        <li><i class="fa-solid fa-cart-shopping"></i></li>
-                        <li id="basket">
-                            <p>Basket</p>
-                            <p class="id">ID</p>
-                        </li>
-                    </div>
+                    <a href="{% url 'cart' %}">
+                        <div id="cart">
+                            <li><i class="fa-solid fa-cart-shopping"></i></li>
+                            <li id="basket">
+                                <p>Basket</p>
+                                <p class="id">ID</p>
+                            </li>
+                        </div>
+                    </a>
                 </li>
             </ul>
         </section>

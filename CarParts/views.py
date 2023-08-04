@@ -1,6 +1,10 @@
+from django.core.mail import send_mail
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, TemplateView
 from CarParts.models import Tyre
+from CarParts.forms import ContactForm
+from django import forms
+
 
 # Create your views here.
 
@@ -34,3 +38,18 @@ class TyreDetailView(DetailView):
         return Tyre.objects.get(id=self.kwargs['pk'])
 
 
+def contact_view(request):
+
+    if request.method == 'POST':
+
+        form = ContactForm()
+
+        if form.is_valid():
+            send_mail(
+                subject=form.cleaned_data['subject'],
+                message=form.cleaned_data['message'],
+                from_email=form.cleaned_data['from_email'],
+                recipient_list=[form.cleaned_data['email']],
+            )
+
+    return render(request, 'contact_form.html', {"form": form})

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'CarShop',
     'Accounts',
     'Cart',
+    'Privacy'
 ]
 
 MIDDLEWARE = [

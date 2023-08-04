@@ -20,17 +20,10 @@ from CarParts import views
 # from Accounts import views
 from django.urls import include
 
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('', views.TyreListView.as_view(), name='main'),
-#     path('tyres/<str:name>', views.TyreDetailView.as_view(), name='tyres'),
-#     # path('login/', views.LoginView.as_view(), name='login'),
-#     # path('accounts/', include('Accounts.urls')),
-# ]
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('CarParts.urls')),
     path('auth/', include('Accounts.urls'), name='auth'),
     path('cart/', include('Cart.urls'), name='cart'),
+    path('privacy/', include('Privacy.urls'), name='privacy'),
 ]

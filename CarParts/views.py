@@ -71,3 +71,4 @@ class ContactFormView(FormView):
             recipient_list=[form.cleaned_data['email']],
         )
         return super().form_valid(form)
+

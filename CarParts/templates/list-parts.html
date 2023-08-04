@@ -385,11 +385,9 @@
 
                 <li>
                     <div class="quantity">
-                        <li>
-                            <p><i class="fa-solid fa-arrow-right"></i></p>
-                            <p></p>
-                            <p><i class="fa-solid fa-arrow-left"></i></p>
-                        </li>
+                            <button class="plus-btn" type="button" name="button"><i class="fa-solid fa-arrow-right"></i></button>
+                            <input id="quantity" type="text" name="name" value="1" readonly>
+                            <button class="minus-btn" type="button" name="button"><i class="fa-solid fa-arrow-left"></i></button>
                     </div>
                 </li>
 
@@ -412,7 +410,7 @@
             let quantity = 1;
         }
 
-        function SingIn{
+        function SingIn(){
             if (user.is_authenticated){
                 let sign_in = "Log out";
                 sign_in.href = "{% url 'logout_user' %}";
@@ -421,6 +419,35 @@
                 sign_in.href = "{% url 'login_user' %}";
             }
         }
+
+        let quantity = document.querySelector('.quantity input');
+        let plusBtn = document.querySelector('.plus-btn');
+        let minusBtn = document.querySelector('.minus-btn');
+        let total = document.querySelector('.tot-price');
+        let quantityValue = 1;
+        // let customer_id = {{ customer }}
+
+        plusBtn.addEventListener('click', function(){
+            console.log('plus');
+
+            quantityValue++;
+            console.log(quantityValue);
+
+            quantity.value = quantityValue;
+        })
+
+        minusBtn.addEventListener('click', function(){
+            console.log('minus');
+
+            if (quantityValue > 1){
+                quantityValue--;
+                console.log(quantityValue);
+
+                quantity.value = quantityValue;
+            }
+        })
+
     </script>
+
 
 {% endblock content %}

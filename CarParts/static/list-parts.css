@@ -42,7 +42,7 @@
 #top-header ul{
     display: flex;
     flex-direction: row;
-    padding-left: 160px;
+    padding-left: 100px;
 }
 
 #top-header ul li{

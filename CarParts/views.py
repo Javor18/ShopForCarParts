@@ -52,4 +52,6 @@ def contact_view(request):
                 recipient_list=[form.cleaned_data['email']],
             )
 
+    form = ContactForm()
+
     return render(request, 'contact_form.html', {"form": form})

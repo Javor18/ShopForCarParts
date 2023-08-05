@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from CarParts import views
 from django.urls import include
+from django.core.mail import send_mail
+
 
 from CarParts.views import ContactFormView
 

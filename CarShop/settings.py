@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'Accounts',
     'Cart',
     'Privacy'
+
 ]
 
 MIDDLEWARE = [
@@ -141,5 +142,10 @@ LOGOUT_REDIRECT_URL = reverse_lazy('main')
 
 # AUTH_USER_MODEL = 'Accounts.User'
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = "CarParts/app-messages"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_FILE_PATH = "CarParts/app-messages"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'jdmirchev@gmail.com'
+EMAIL_HOST_PASSWORD = 'xnyccveailjxvfcr'

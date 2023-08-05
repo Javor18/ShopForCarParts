@@ -29,3 +29,10 @@ urlpatterns = [
     path('tyres/<int:pk>', views.TyreDetailView.as_view(), name='tyre_detail'),
     path('contact-us/', ContactFormView.as_view(), name='contact'),
 ]
+
+# send_mail(
+#             subject='Registration successful',
+#             message='It works!',
+#             from_email='info@carshop.com',
+#             recipient_list=('jdmirchev@gmail.com', ),
+#         )

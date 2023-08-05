@@ -20,6 +20,8 @@ from CarParts import views
 # from Accounts import views
 from django.urls import include
 from Accounts import views
+from django.core.mail import send_mail
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +29,4 @@ urlpatterns = [
     path('login/', views.LoginUserView.as_view(), name='login_user'),
     path('logout/', views.LogoutUserView.as_view(), name='logout_user'),
     path('', views.UsersListView.as_view(), name='users_list'),
-
 ]

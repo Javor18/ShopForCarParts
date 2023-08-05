@@ -3,6 +3,10 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, AbstractBaseUser
 from django.contrib.auth import models as auth_models
 from django.contrib.auth import get_user_model
+from django.shortcuts import render
+import form as form
+
+
 
 from Accounts import apps
 

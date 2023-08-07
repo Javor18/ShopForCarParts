@@ -43,8 +43,12 @@ INSTALLED_APPS = [
     'CarShop',
     'Accounts',
     'Cart',
-    'Privacy'
+    'Privacy',
 
+
+    # My Apps
+
+    # "CarParts.apps.CarpartsConfig",
 ]
 
 MIDDLEWARE = [

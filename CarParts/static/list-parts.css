@@ -9,6 +9,8 @@
 
 #top-header .sign-profile{
     display: flex;
+    /*flex-direction: column;*/
+    gap: 16px;
 }
 
 #top-header .logout-profile{

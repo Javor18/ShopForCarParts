@@ -143,6 +143,8 @@ LOGIN_URL = reverse_lazy('login_user')
 
 LOGOUT_REDIRECT_URL = reverse_lazy('main')
 
+REGISTER_REDIRECT_URL = reverse_lazy('main')
+
 
 # AUTH_USER_MODEL = 'Accounts.User'
 

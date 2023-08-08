@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.views import generic as views
 from django.utils.translation import gettext_lazy as _
+from django.forms import CharField, PasswordInput, BooleanField
 
 from CarParts.models import Profile
 from CarParts.signals import send_successfull_registration_email
@@ -18,42 +19,24 @@ UserModel = get_user_model()
 
 
 class RegisterUserForm(auth_forms.UserCreationForm):
-    consent = forms.BooleanField()
-    first_name = forms.CharField(
-        max_length=30,
-        required=True
-    )
+    content = BooleanField()
 
-    password2 = forms.CharField(
-        label=_("Repeat Password"),
-        widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
+    password2 = CharField(
+        label="Repeat Password",
+        widget=PasswordInput(attrs={"autocomplete": "new-password"}),
         strip=False,
-        help_text=_("Repeat password, please"),
     )
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['password1'].help_text = _('It works')
-
-
-    # def save(self, commit=True):
-    #     user = super().save(commit)
-    #     import pdb;pdb.set_trace()
-    #     user.username = user.first_name
-    #     user.save()
-    #     # profile = Profile(
-    #     #     first_name=self.cleaned_data['first_name'],
-    #     #     user=user,
-    #     # )
-    #     # if commit:
-    #     #     profile.save()
-    #
-    #     return user
 
     class Meta:
         model = UserModel
-        fields = ('email', 'username', 'password1', 'password2', 'consent', 'first_name')
+        fields = ('email', 'password1', 'password2', 'first_name', 'last_name')
 
+    def save(self, commit=True):
+        instance = super(RegisterUserForm, self).save(commit=False)
+        instance.username = instance.email
+        if commit:
+            instance.save()
+        return instance
 
 # def register_view(request):
 #     if request.method == 'GET':
@@ -73,7 +56,7 @@ class RegisterUserView(views.CreateView):
     form_class = RegisterUserForm
 
     # Static way of providing `success_url`
-    success_url = reverse_lazy('register_user')
+    success_url = reverse_lazy('main')
 
     def form_valid(self, form):
         result = super().form_valid(form)

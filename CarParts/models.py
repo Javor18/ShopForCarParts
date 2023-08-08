@@ -73,8 +73,3 @@ class Book(models.Model):
         on_delete=models.DO_NOTHING)
     # incorrect:
     # profile = models.ForeignKey(Profile)
-
-
-def contact_view(request):
-
-    return render(request, 'contact.html', {"form": form})

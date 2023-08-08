@@ -38,6 +38,6 @@ def send_successfull_registration_email(user):
     )
 
 
-@receiver(post_save, sender=UserModel)
-def user_created(*args, **kwargs):
-    send_successfull_registration_email(None)
+# @receiver(post_save, sender=UserModel)
+# def user_created(*args, **kwargs):
+#     send_successfull_registration_email(None)

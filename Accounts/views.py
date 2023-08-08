@@ -12,6 +12,7 @@ from django.views import generic as views
 from django.utils.translation import gettext_lazy as _
 
 from CarParts.models import Profile
+from CarParts.signals import send_successfull_registration_email
 
 UserModel = get_user_model()
 
@@ -34,21 +35,24 @@ class RegisterUserForm(auth_forms.UserCreationForm):
         super().__init__(*args, **kwargs)
         self.fields['password1'].help_text = _('It works')
 
-    def save(self, commit=True):
-        user = super().save(commit)
 
-        profile = Profile(
-            first_name=self.cleaned_data['first_name'],
-            user=user,
-        )
-        if commit:
-            profile.save()
+    # def save(self, commit=True):
+    #     user = super().save(commit)
+    #     import pdb;pdb.set_trace()
+    #     user.username = user.first_name
+    #     user.save()
+    #     # profile = Profile(
+    #     #     first_name=self.cleaned_data['first_name'],
+    #     #     user=user,
+    #     # )
+    #     # if commit:
+    #     #     profile.save()
+    #
+    #     return user
 
-        return user
-
-    class Meta(auth_forms.UserCreationForm.Meta):
+    class Meta:
         model = UserModel
-        fields = ('email',)
+        fields = ('email', 'username', 'password1', 'password2', 'consent', 'first_name')
 
 
 # def register_view(request):
@@ -73,6 +77,8 @@ class RegisterUserView(views.CreateView):
 
     def form_valid(self, form):
         result = super().form_valid(form)
+
+        # send_successfull_registration_email(None)
 
         login(self.request, self.object)
 

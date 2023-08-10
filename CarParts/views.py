@@ -8,6 +8,7 @@ from django.views.generic import ListView, DetailView, TemplateView, FormView
 from CarParts.forms import ContactForm
 from django import forms
 from django.urls import reverse_lazy
+from django.conf import settings
 
 # Create your views here.
 
@@ -68,7 +69,10 @@ class ContactFormView(FormView):
         send_mail(
             subject=form.cleaned_data['subject'],
             message=form.cleaned_data['message'],
-            from_email=form.cleaned_data['from_email'],
+            from_email=settings.EMAIL_HOST_USER,
             recipient_list=[form.cleaned_data['email']],
         )
         return super().form_valid(form)
+
+class TermsAndConditionsView(TemplateView):
+    template_name = 'terms-and-conditions.html'

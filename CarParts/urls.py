@@ -21,13 +21,14 @@ from django.urls import include
 from django.core.mail import send_mail
 
 
-from CarParts.views import ContactFormView
+from CarParts.views import ContactFormView, TermsAndConditionsView
 
 urlpatterns = [
     path('', views.TyreListView.as_view(), name='main'),
     # path('tyres/<str:name>', views.TyreDetailView.as_view(), name='tyre_detail'),
     path('tyres/<int:pk>', views.TyreDetailView.as_view(), name='tyre_detail'),
     path('contact-us/', ContactFormView.as_view(), name='contact'),
+    path('terms-and-conditions/', TermsAndConditionsView.as_view(), name='terms-and-conditions'),
 ]
 
 # send_mail(

@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="{% static 'list-parts.css' %}" rel="stylesheet">
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
         <section id="main-right-side">
                 <div class="left-side">
                     <ul>
@@ -160,6 +154,4 @@
 
             </ul>
         </section>
-
-</body>
-</html>
+{% endblock %}

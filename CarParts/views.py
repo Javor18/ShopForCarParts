@@ -1,5 +1,9 @@
+import json
+
 from django.core.mail import send_mail
+from django.http import JsonResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, DetailView, FormView
 from CarParts.models import Tyre
 from django.core.mail import send_mail
@@ -9,6 +13,9 @@ from CarParts.forms import ContactForm
 from django import forms
 from django.urls import reverse_lazy
 from django.conf import settings
+
+from Cart.models import Order, OrderItem
+
 
 # Create your views here.
 
@@ -76,3 +83,55 @@ class ContactFormView(FormView):
 
 class TermsAndConditionsView(TemplateView):
     template_name = 'terms-and-conditions.html'
+
+
+@csrf_exempt
+def updateItem(request):
+
+    print("updateItem")
+
+    data = json.loads(request.body)
+    # all_data = cartData(request)
+
+    print(data)
+    # print(all_data)
+
+    action = data['action']
+    # quantity = all_data['order']['get_cart_items']
+    quantity = data['quantity']
+
+    print("QUANTITY")
+    print(quantity)
+
+    drink_id = int(data['productId'])
+    print("Drink id -----------")
+    print(drink_id)
+
+    drink = Tyre.objects.get(id=drink_id)
+
+    print('Action:', action)
+    print('Product:', drink)
+    print('Quantity:', quantity)
+
+    order, created = Order.objects.get_or_create(customer=request.user, status="DRAFT")
+    print(order)
+    orderItem, created = OrderItem.objects.get_or_create(order=order, product=drink)
+
+    print(action)
+
+    print(orderItem.id, created)
+
+    if action == 'delete':
+        orderItem.delete()
+
+    if action == "remove" or action == "add" or action == "plus":
+        orderItem.quantity += int(quantity)
+        orderItem.save()
+
+    if action == 'remove':
+        if orderItem.quantity <= 0:
+            orderItem.delete()
+
+    print(action, orderItem.quantity)
+
+    return JsonResponse({"message": "ok"})

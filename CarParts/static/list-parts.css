@@ -579,3 +579,7 @@
     text-decoration: none;
     color: inherit;
 }
+
+.add-to-cart button:hover{
+    cursor: pointer;
+}

@@ -11,6 +11,8 @@ from django.urls import reverse_lazy
 from django.views import generic as views
 from django.utils.translation import gettext_lazy as _
 from django.forms import CharField, PasswordInput, BooleanField
+# from django import allowed_users
+from django.contrib.auth.models import Group, User
 
 from CarParts.models import Profile
 from CarParts.signals import send_successfull_registration_email
@@ -115,3 +117,9 @@ class UsersListView(auth_mixins.LoginRequiredMixin, views.ListView):
 
     # Login URL only for this view:
     # login_url = 'custom-login/url'
+
+
+@login_required(login_url=reverse_lazy('login'))
+class AccountView(views.UpdateView):
+
+    model = UserModel

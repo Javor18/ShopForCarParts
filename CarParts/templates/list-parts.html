@@ -329,6 +329,7 @@
         let minusBtn = document.querySelector('.minus-btn');
         let total = document.querySelector('.tot-price');
         let quantityValue = 1;
+        let csrftoken = "{{ csrf_token }}"
         // let customer_id = {{ customer }}
 
         plusBtn.addEventListener('click', function(){
@@ -375,6 +376,7 @@
             function updateUserOrder(productId, action, quantity){
 
                     console.log('User is authenticated, sending data...')
+                    console.log('csrf:', csrftoken)
 
 
                     var url = '/update_item/'

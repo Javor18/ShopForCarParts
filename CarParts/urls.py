@@ -29,6 +29,7 @@ urlpatterns = [
     path('tyres/<int:pk>', views.TyreDetailView.as_view(), name='tyre_detail'),
     path('contact-us/', ContactFormView.as_view(), name='contact'),
     path('terms-and-conditions/', TermsAndConditionsView.as_view(), name='terms-and-conditions'),
+    path('update_item/', views.updateItem, name='update_item'),
 ]
 
 # send_mail(

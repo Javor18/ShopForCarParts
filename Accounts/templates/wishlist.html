@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Your Wishlist</h2>
+{% for product in wishlist.products.all %}
+    <h3>{{ product.name }}</h3>
+    <a href="{% url 'remove_from_wishlist' product.id %}">Remove</a>
+    <!-- Display other product details -->
+{% endfor %}
+{% endblock %}

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+    <section id="main">
         <section id="main-right-side">
                 <div class="left-side">
                     <ul>
@@ -135,23 +136,110 @@
 
                 <li>
                     <div class="quantity">
-                        <li>
-                            <p><i class="fa-solid fa-arrow-right"></i></p>
-                            <p></p>
-                            <p><i class="fa-solid fa-arrow-left"></i></p>
-                        </li>
+                            <button class="plus-btn" type="button" name="button"><i class="fa-solid fa-arrow-right"></i></button>
+                            <input id="quantity" type="text" name="name" value="1" readonly>
+                            <button class="minus-btn" type="button" name="button"><i class="fa-solid fa-arrow-left"></i></button>
                     </div>
                 </li>
 
-                <li>
                     <div class="add-to-cart">
-                        <button>
-                            <p><i class="fa-solid fa-shopping-cart"></i></p>
-                            <p>ADD TO CART</p>
+                        <button data-product="{{ tire.id }}" data-action="add" class="add-to-cart-btn update-cart" type="button">                        <p><i class="fa-solid fa-shopping-cart"></i></p>
+                        <p>ADD TO CART</p>
                         </button>
                     </div>
-                </li>
 
             </ul>
         </section>
+    </section>
+
+
+    <script>
+        function add_quantyty() {
+            let quantity = 1;
+        }
+
+        function SingIn(){
+            if (user.is_authenticated){
+                let sign_in = "Log out";
+                sign_in.href = "{% url 'logout_user' %}";
+            } else {
+                let sign_in = "Sign in";
+                sign_in.href = "{% url 'login_user' %}";
+            }
+        }
+
+        let quantity = document.querySelector('.quantity input');
+        let plusBtn = document.querySelector('.plus-btn');
+        let minusBtn = document.querySelector('.minus-btn');
+        let total = document.querySelector('.tot-price');
+        let quantityValue = 1;
+        let csrftoken = "{{ csrf_token }}"
+        // let customer_id = {{ customer }}
+
+        plusBtn.addEventListener('click', function(){
+            console.log('plus');
+
+            quantityValue++;
+            console.log(quantityValue);
+
+            quantity.value = quantityValue;
+        })
+
+        minusBtn.addEventListener('click', function(){
+            console.log('minus');
+
+            if (quantityValue > 1){
+                quantityValue--;
+                console.log(quantityValue);
+
+                quantity.value = quantityValue;
+            }
+        })
+
+        /////////// Add to Cart ///////////
+
+        // let user = '{{request.user}}'
+
+            let updateBtns = document.getElementsByClassName('add-to-cart-btn')
+
+
+            for (let i = 0; i < updateBtns.length; i++) {
+
+                updateBtns[i].addEventListener('click', function (){
+                    let productId = this.dataset.product
+                    let action = this.dataset.action
+                    let quantity = document.getElementById('quantity').value
+                    console.log('productId:', productId, 'Action:', action, 'Quantity:', quantity)
+
+                    // console.log('User:', user)
+
+                    updateUserOrder(productId, action, quantity)
+                })
+            }
+
+            function updateUserOrder(productId, action, quantity){
+
+                    console.log('User is authenticated, sending data...')
+                    console.log('csrf:', csrftoken)
+
+
+                    var url = '/update_item/'
+
+                    fetch(url, {
+                        method:'POST',
+                        headers:{
+                            'Content-Type':'application/json',
+                            'X-CSRFToken':csrftoken,
+                        },
+                        body:JSON.stringify({'productId':productId, 'action':action, 'quantity': quantity})
+                    })
+                        .then((response) => {
+                            return response.json();
+                        })
+                        .then((data) => {
+                            location.reload()
+                        });
+                }
+
+         </script>
 {% endblock %}

@@ -323,6 +323,7 @@
 
 #main-part{
     display: flex;
+    margin-top: 5rem;
 }
 
 #main-right-side{
@@ -582,4 +583,30 @@
 
 .add-to-cart button:hover{
     cursor: pointer;
+}
+
+#footer{
+    display: flex;
+    gap: 7rem;
+    font-size: 21px;
+    background: radial-gradient(circle at -1% 57.5%, rgb(19, 170, 82) 0%, rgb(0, 102, 43) 90%);
+    padding-left: 6rem;
+    color: white;
+    margin-left: 5.6rem;
+    width: 68rem;
+}
+
+#footer a{
+    text-decoration: none;
+    color: inherit;
+}
+
+#footer p:last-child{
+    margin-right: 7rem;
+}
+
+#main{
+    display: flex;
+    align-items: center;
+    margin-left: 15rem;
 }

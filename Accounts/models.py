@@ -5,6 +5,7 @@ from django.contrib.auth import models as auth_models
 from django.contrib.auth import get_user_model
 from django.shortcuts import render
 import form as form
+from CarParts.models import Tyre
 
 
 
@@ -25,3 +26,7 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name
+
+class Wishlist(models.Model):
+    user = models.OneToOneField(User, null=True, blank=False, on_delete=models.CASCADE)
+    products = models.ManyToManyField(Tyre)

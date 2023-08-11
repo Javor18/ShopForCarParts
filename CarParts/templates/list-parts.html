@@ -296,13 +296,12 @@
                     </div>
                 </li>
 
-<!--                <li>-->
                 <div class="add-to-cart">
                         <button data-product="{{ tire.id }}" data-action="add" class="add-to-cart-btn update-cart" type="button">                        <p><i class="fa-solid fa-shopping-cart"></i></p>
-                        <p>ADD TO CART</p>
-                    </button>
+                            <p>ADD TO CART</p>
+                        </button>
+                        <a href="{% url 'add_to_wishlist' tire.id %}">Add to Wishlist</a>
                 </div>
-<!--                </li>-->
 
             </ul>
             {% endfor %}
@@ -396,31 +395,6 @@
                             location.reload()
                         });
                 }
-
-
-            // {        ///////////////// CSRF Token ////////////////#}
-
-             //    function getToken(name) {
-             //        var cookieValue = null;
-             //        if (document.cookie && document.cookie !== '') {
-             //            var cookies = document.cookie.split(';');
-             //
-             //            for (var i = 0; i < cookies.length; i++) {
-             //
-             //                var cookie = cookies[i].trim();
-             //
-             //                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-             //
-             //                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-             //
-             //                    break;
-             //                }
-             //            }
-             //        }
-             //        return cookieValue;
-             //    }
-             //
-             // // {#let csrftoken = getToken('csrftoken')#}
 
          </script>
 

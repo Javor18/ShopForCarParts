@@ -3,16 +3,14 @@
 from django.contrib.auth import views as auth_views, login, get_user_model
 from django.contrib.auth import mixins as auth_mixins
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from django.core.exceptions import ValidationError
 from django.urls import reverse_lazy
 from django.views import generic as views
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UserAccountForm
-import Accounts.models
 from Accounts.forms import RegisterUserForm
+from django.shortcuts import render, redirect
+from Accounts.models import Wishlist
+from CarParts.models import Tyre
 
 
 
@@ -68,14 +66,6 @@ class UsersListView(auth_mixins.LoginRequiredMixin, views.ListView):
     model = UserModel
     template_name = 'users_list.html'
 
-    # Login URL only for this view:
-    # login_url = 'custom-login/url'
-
-
-# @login_required(login_url=reverse_lazy('login'))
-# class AccountView(views.UpdateView):
-
-
 @login_required
 def view_and_edit_account(request):
     user = request.user
@@ -89,4 +79,18 @@ def view_and_edit_account(request):
     else:
         form = UserAccountForm(instance=user)
 
-    return render(request, 'account', {'form': form})
+    return render(request, 'account.html', {'form': form})
+
+@login_required
+def add_to_wishlist(request, product_id):
+    product = Tyre.objects.get(pk=product_id)
+    wishlist, created = Wishlist.objects.get_or_create(user=request.user)
+    wishlist.products.add(product)
+    return redirect('list-parts')  # Change to your product list view
+
+@login_required
+def remove_from_wishlist(request, product_id):
+    product = Tyre.objects.get(pk=product_id)
+    wishlist = Wishlist.objects.get(user=request.user)
+    wishlist.products.remove(product)
+    return redirect('wishlist')

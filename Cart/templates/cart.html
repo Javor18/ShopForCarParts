@@ -2,8 +2,8 @@
 {% load static %}
 {% block css_block %}
     <link rel="stylesheet" href="{% static 'list-parts.css' %}">
-    <link rel="stylesheet" href="{% static 'cart.css' %}">
-    <link rel="stylesheet" href="{% static 'cart-responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cart-responsive.css' %}">
 {% endblock %}
 <script src="https://kit.fontawesome.com/4cf7026c74.js" crossorigin="anonymous"></script>
 
@@ -56,11 +56,11 @@
 
 				</div>
 
-                {% for item in items %}
+                {% for item in object_list %}
 				<div class="cart-row">
-                    <div style="flex:2"><img class="row-image" src="{% static 'images/'|add:item.product.productName|add:'.jpg' %}" alt="Drink Image" /></div>
-                    <div style="flex:2"><p>{{item.product.productName}}</p></div>
-                    <div style="flex:1"><p>$ {{item.product.price_with_profit|floatformat:2}}</p></div>
+                    <div style="flex:2"><img class="product-desc-img" src="{% static 'images/no-tyre.jpg' %}"></div>
+                    <div style="flex:2"><p>{{item.product}}</p></div>
+                    <div style="flex:1"><p>$ {{item.product.price|floatformat:2}}</p></div>
 					<div style="flex:1">
 {#						<p class="quantity">x{{item.quantity}}</p>#}
                         <p class="quantity">{{item.quantity}}</p>
@@ -73,11 +73,12 @@
 						</div>
 					</div>
                     <div style="flex:1"><p>${{item.get_total|floatformat:2}}</p></div>
-                 <div style="flex:1">
-{#                        <button id="trash" data-item="{{ item.product.id }}" data-quantity="{{ item.product.quantity }}" data-action="delete"><i class="fa-solid fa-trash"></i></button>#}
+                    <div style="flex:1">
+{#                      <button id="trash" data-item="{{ item.product.id }}" data-quantity="{{ item.product.quantity }}" data-action="delete"><i class="fa-solid fa-trash"></i></button>#}
                         <button class="trash" data-product="{{ item.product.id }}" data-quantity="{{ item.product.quantity }}" data-action="delete"><i class="fa-solid fa-trash"></i></button>
                     </div>
 				</div>
+
                 {% endfor %}
             </div>
         </div>
@@ -99,7 +100,6 @@
                         function Operation() {
                             let action = this.dataset.action;
                             let product = this.dataset.product;
-                            {#let all_quantity = 0#}
                             let quantity = this.dataset.quantity;
 
                             if(action == "plus"){

@@ -103,19 +103,19 @@ def updateItem(request):
     print("QUANTITY")
     print(quantity)
 
-    drink_id = int(data['productId'])
-    print("Drink id -----------")
-    print(drink_id)
+    tyre_id = int(data['productId'])
+    print("Tyre id -----------")
+    print(tyre_id)
 
-    drink = Tyre.objects.get(id=drink_id)
+    tyre = Tyre.objects.get(id=tyre_id)
 
     print('Action:', action)
-    print('Product:', drink)
+    print('Product:', tyre)
     print('Quantity:', quantity)
 
     order, created = Order.objects.get_or_create(customer=request.user, status="DRAFT")
     print(order)
-    orderItem, created = OrderItem.objects.get_or_create(order=order, product=drink)
+    orderItem, created = OrderItem.objects.get_or_create(order=order, product=tyre)
 
     print(action)
 

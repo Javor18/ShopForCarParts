@@ -6,20 +6,25 @@ from django.shortcuts import render
 
 # Create your models here.
 
-class Tyre(models.Model):
-
+class ProductMixin(models.Model):
     brand = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
+
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    quantity = models.IntegerField(null=True, blank=True)
 
     ean_num = models.CharField(max_length=100, null=True, blank=True)
     mpn_num = models.CharField(max_length=100, null=True, blank=True)
 
-    price = models.DecimalField(max_digits=5, decimal_places=2)
-    season = models.CharField(max_length=100)
-
-    quantity = models.IntegerField(null=True, blank=True)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
     description = models.TextField(max_length=1000, null=True, blank=True)
+
+    class Meta:
+        abstract = True
+
+class Tyre(ProductMixin, models.Model):
+
+    season = models.CharField(max_length=100)
 
     width = models.IntegerField()
     height = models.IntegerField()
@@ -32,20 +37,19 @@ class Tyre(models.Model):
     rim_protection = models.BooleanField()
     run_flat = models.BooleanField()
 
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(args, kwargs)
-    #     self.object_name_constant = "Tires"
-
     def __str__(self):
-        return f"{self.brand} {self.model} {self.price}$"
+        return f"{self.brand} {self.model}"
 
     def __repr__(self):
-        return f"{self.brand} {self.model} {self.price}"
+        return f"{self.brand} {self.model}"
 
     class Meta:
         # I want the verbose name to be equal to brand name
         verbose_name = "Tyre"
         verbose_name_plural = "Tyres"
+
+    def short_name(self):
+        return f"{self.brand} {self.model}"
 
     # created_at = models.DateTimeField(auto_now_add=True)
     # updated_at = models.DateTimeField(auto_now=True)
@@ -74,45 +78,9 @@ class Book(models.Model):
     # incorrect:
     # profile = models.ForeignKey(Profile)
 
-class TyreBrand(models.Model):
+class Brand(models.Model):
 
     name = models.CharField(max_length=100, blank=False, unique=True)
 
     def __str__(self):
         return self.name
-
-class TyreModel(models.Model):
-
-    # brand = models.ForeignKey(TyreBrand, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100, blank=False, unique=True)
-
-    def __str__(self):
-        return self.name
-
-class TyrePrice(models.Model):
-
-    price = models.DecimalField(max_digits=5, decimal_places=2)
-
-    def __str__(self):
-        return self.price
-
-class TyreWidth(models.Model):
-
-        width = models.IntegerField()
-
-        def __str__(self):
-            return self.width
-
-class TyreHeight(models.Model):
-
-        height = models.IntegerField()
-
-        def __str__(self):
-            return self.height
-
-class TyreDiameter(models.Model):
-
-        diameter = models.IntegerField()
-
-        def __str__(self):
-            return self.diameter

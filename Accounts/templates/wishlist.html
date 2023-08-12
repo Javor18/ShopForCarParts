@@ -18,9 +18,78 @@
                 <a href="{% url 'remove_from_wishlist' item.id %}">
                 <button class="trash" data-product="{{ item.product.id }}" data-quantity="{{ item.product.quantity }}" data-action="delete"><i class="fa-solid fa-trash"></i></button>
                 </a>
+                <button data-product="{{ tire.id }}" data-action="add" class="add-to-cart-btn update-cart" type="button">
+                    <p><i class="fa-solid fa-shopping-cart"></i></p>
+                    <p>ADD TO CART</p>
+                </button>
             </div>
         </div>
 </div>
+
+
+<script>
+     let updateBtns = document.getElementsByClassName('add-to-cart-btn')
+
+
+            for (let i = 0; i < updateBtns.length; i++) {
+
+                updateBtns[i].addEventListener('click', function (){
+                    let productId = this.dataset.product
+                    let action = this.dataset.action
+                    let quantity = 1
+                    console.log('productId:', productId, 'Action:', action, 'Quantity:', quantity)
+
+                    // console.log('User:', user)
+
+                    updateUserOrder(productId, action, quantity)
+                })
+            }
+
+            function updateUserOrder(productId, action, quantity){
+
+                    console.log('User is authenticated, sending data...')
+                    console.log('csrf:', csrftoken)
+
+
+                    var url = '/update_item/'
+
+                    fetch(url, {
+                        method:'POST',
+                        headers:{
+                            'Content-Type':'application/json',
+                            'X-CSRFToken':csrftoken,
+                        },
+                        body:JSON.stringify({'productId':productId, 'action':action, 'quantity': quantity})
+                    })
+                        .then((response) => {
+                            return response.json();
+                        })
+                        .then((data) => {
+                            location.reload()
+                        });
+                }
+
+             let csrftoken = getToken('csrftoken')
+             function getToken(name) {
+                 var cookieValue = null;
+                 if (document.cookie && document.cookie !== '') {
+                     var cookies = document.cookie.split(';');
+
+                     for (var i = 0; i < cookies.length; i++) {
+
+                         var cookie = cookies[i].trim();
+
+                         if (cookie.substring(0, name.length + 1) === (name + '=')) {
+
+                             cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+
+                             break;
+                         }
+                     }
+                 }
+                 return cookieValue;
+             }
+</script>
 
 {% endfor %}
 {% endblock %}

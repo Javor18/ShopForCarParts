@@ -16,11 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from CarParts import views
-# from Accounts import views
-from django.urls import include
 from Accounts import views
-from django.core.mail import send_mail
 
 
 urlpatterns = [

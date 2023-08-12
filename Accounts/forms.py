@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.forms import CharField, BooleanField, PasswordInput
 from django.contrib.auth import forms as auth_forms
-from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django import forms
 

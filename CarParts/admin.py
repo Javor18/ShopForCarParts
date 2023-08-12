@@ -9,9 +9,6 @@ from CarParts.models import Tyre
 class TyreAdmin(admin.ModelAdmin):
 
     list_display = ["brand", "model", "price", "width", "height", "diameter"]
-    # list_display = ["short_name", "price", "width", "height", "diameter"]
-
-    # search_fields = ["brand", "model", "price", "width", "height", "diameter"]
     search_fields = ["brand", "model"]
 
     list_filter = ["brand"]

@@ -9,7 +9,6 @@
 
 #top-header .sign-profile{
     display: flex;
-    /*flex-direction: column;*/
     gap: 16px;
 }
 
@@ -324,7 +323,7 @@
 #main-part{
     display: flex;
     margin-top: 5rem;
-    margin-left: -42px;
+    margin-left: 40px;
 }
 
 #main-right-side{

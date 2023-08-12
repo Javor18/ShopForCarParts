@@ -52,14 +52,6 @@
                                         <p>{{tire.model}}</p>
                                     </li>
 
-<!--                                    <li>-->
-<!--                                        <div>-->
-<!--                                            <p>The EU tyre label</p>-->
-<!--                                            <p>EU TYRE LABEL IMG</p>-->
-<!--                                        </div>-->
-<!--                                        <p>SEASON IMG</p>-->
-<!--                                    </li>-->
-
                                     <li>
                                         <div class="main-product-desc">
 
@@ -202,8 +194,6 @@
 
         /////////// Add to Cart ///////////
 
-        // let user = '{{request.user}}'
-
             let updateBtns = document.getElementsByClassName('add-to-cart-btn')
 
 
@@ -214,8 +204,6 @@
                     let action = this.dataset.action
                     let quantity = document.getElementById('quantity').value
                     console.log('productId:', productId, 'Action:', action, 'Quantity:', quantity)
-
-                    // console.log('User:', user)
 
                     updateUserOrder(productId, action, quantity)
                 })
@@ -247,8 +235,6 @@
 
 
             /////////// Add to Wishlist ///////////
-
-        // let user = '{{request.user}}'
 
             let WishlistUpdateBtns = document.getElementsByClassName('add-to-wishlist-btn')
 

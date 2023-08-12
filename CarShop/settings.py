@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'Accounts',
     'Cart',
     'Privacy',
-    'django_filters',
     'bootstrap4'
 
     # My Apps

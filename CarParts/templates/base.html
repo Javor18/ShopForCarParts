@@ -1,4 +1,7 @@
 {% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +26,19 @@
                     <img src="{% static 'images/shop_logo.jpg' %}">
                 </li>
                 <li id="search-input">
-                    <input type="text" placeholder="Search by product, vehicle, or brand">
-                    <div id="search-icon">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
+                    <form id="search-bar"
+                        action="{% url 'main' %}"
+                        method="get">
+
+                        <input type="text" name="search" placeholder="Enter something" required="" id="id_search">
+
+                        <button type="submit" id="search-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+
+                        {% csrf_token %}
+
+                    </form>
                 </li>
                     <li id="profile">
                         <i class="fa-solid fa-user"></i>

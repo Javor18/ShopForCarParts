@@ -7,3 +7,6 @@ class ContactForm(Form):
     email = forms.EmailField()
     subject = forms.CharField()
     message = forms.CharField(widget=Textarea)
+
+class SearchBarForm(Form):
+    search = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Enter something'}))

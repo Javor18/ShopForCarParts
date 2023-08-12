@@ -11,7 +11,7 @@ from CarParts.models import Tyre
 from django.core.mail import send_mail
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, TemplateView, FormView
-from CarParts.forms import ContactForm
+from CarParts.forms import ContactForm, SearchBarForm
 from django import forms
 from django.urls import reverse_lazy
 from django.conf import settings
@@ -30,6 +30,13 @@ class TyreListView(ListView):
     ordering = ['-id']
     paginate_by = 3
     tyres = Tyre.objects.all()
+
+    def get_queryset(self):
+        if self.request.GET.get('search'):
+            return Tyre.objects.filter(brand=self.request.GET.get('search'))
+        else:
+            return Tyre.objects.all()
+
 
 
 class TyreDetailView(DetailView):
@@ -179,6 +186,6 @@ def wishlistCreateView(request):
     return JsonResponse({"message": "ok"})
 
 def product_list(request):
-    queryset = Product.objects.all()
+    queryset = Tyre.objects.all()
     product_filter = ProductFilter(request.GET, queryset=queryset)
     return render(request, 'product_list.html', {'filter': product_filter})

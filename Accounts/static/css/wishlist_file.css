@@ -54,6 +54,7 @@ h1,h2,h3,h4,h5,h6{
     margin-bottom: 10px;
     border: 1px solid black;
     align-items: center;
+    width: 48rem;
 
 }
 
@@ -73,6 +74,7 @@ h1,h2,h3,h4,h5,h6{
 	width: 60%;
 	margin: auto;
 	margin-top: 30px;
+
 }
 .table h5{
 	margin-right: 22rem;

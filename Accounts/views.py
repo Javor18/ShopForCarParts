@@ -8,7 +8,7 @@ from django.views import generic as views
 from django.contrib import messages
 from .forms import UserAccountForm
 from Accounts.forms import RegisterUserForm
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from Accounts.models import WishlistItem
 from CarParts.models import Tyre
 
@@ -96,7 +96,6 @@ def add_to_wishlist(request, product_id):
 
 @login_required
 def remove_from_wishlist(request, wishlist_item_id):
-    wishlist_item = WishlistItem.objects.get(user=request.user)
+    wishlist_item = get_object_or_404(WishlistItem, id=wishlist_item_id, user=request.user)
     wishlist_item.delete()
     return redirect('wishlist')
-

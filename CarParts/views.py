@@ -93,13 +93,10 @@ def updateItem(request):
     print("updateItem")
 
     data = json.loads(request.body)
-    # all_data = cartData(request)
 
     print(data)
-    # print(all_data)
 
     action = data['action']
-    # quantity = all_data['order']['get_cart_items']
     quantity = data['quantity']
 
     print("QUANTITY")
@@ -145,10 +142,8 @@ def wishlistCreateView(request):
     print("WishlistItem")
 
     data = json.loads(request.body)
-    # all_data = cartData(request)
 
     print(data)
-    # print(all_data)
 
     action = data['action']
 

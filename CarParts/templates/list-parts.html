@@ -301,7 +301,7 @@
                             <p><i class="fa-solid fa-shopping-cart"></i></p>
                             <p>ADD TO CART</p>
                         </button>
-                        <button data-product="{{ tire.id }}" data-action="add" class="add-to-wishlist-btn" type="button">
+                        <button data-product="{{ tire.id }}" data-action="add" class="add-to-wishlist-btn update-cart" type="button">
                             <p>Add to Wishlist</p>
                         </button>
                 </div>
@@ -412,16 +412,13 @@
                 WishlistUpdateBtns[i].addEventListener('click', function (){
                     let productId = this.dataset.product
                     let action = this.dataset.action
-                    let quantity = document.getElementById('quantity').value
-                    console.log('productId:', productId, 'Action:', action, 'Quantity:', quantity)
+                    console.log('productId:', productId, 'Action:', action)
 
-                    // console.log('User:', user)
-
-                    updateUserOrder(productId, action, quantity)
+                    WishlistItemUpdate(productId, action)
                 })
             }
 
-            function updateUserOrder(productId, action, quantity){
+            function WishlistItemUpdate(productId, action){
 
                     console.log('User is authenticated, sending data...')
                     console.log('csrf:', csrftoken)
@@ -435,7 +432,7 @@
                             'Content-Type':'application/json',
                             'X-CSRFToken':csrftoken,
                         },
-                        body:JSON.stringify({'productId':productId, 'action':action, 'quantity': quantity})
+                        body:JSON.stringify({'productId':productId, 'action':action})
                     })
                         .then((response) => {
                             return response.json();

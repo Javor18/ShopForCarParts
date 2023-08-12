@@ -19,5 +19,5 @@ class Customer(AbstractUser):
 
 UserModel = get_user_model()
 class WishlistItem(models.Model):
-    user = models.OneToOneField(UserModel, null=True, blank=False, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserModel, null=True, blank=False, on_delete=models.CASCADE)
     product = models.OneToOneField(Tyre , on_delete=models.CASCADE)

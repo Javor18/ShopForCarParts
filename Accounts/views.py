@@ -99,3 +99,4 @@ def remove_from_wishlist(request, wishlist_item_id):
     wishlist_item = WishlistItem.objects.get(user=request.user)
     wishlist_item.delete()
     return redirect('wishlist')
+

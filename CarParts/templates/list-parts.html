@@ -290,9 +290,9 @@
 
                 <li>
                     <div class="quantity">
-                            <button class="plus-btn" type="button" name="button"><i class="fa-solid fa-arrow-right"></i></button>
+                            <button class="plus-btn"><i class="fa-solid fa-arrow-right"></i></button>
                             <input id="quantity" type="text" name="name" value="1" readonly>
-                            <button class="minus-btn" type="button" name="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="minus-btn"><i class="fa-solid fa-arrow-left"></i></button>
                     </div>
                 </li>
 
@@ -326,44 +326,44 @@
             }
         }
 
-        let quantity = document.querySelector('.quantity input');
-        let plusBtn = document.querySelector('.plus-btn');
-        let minusBtn = document.querySelector('.minus-btn');
-        let total = document.querySelector('.tot-price');
-        let quantityValue = 1;
+        let quantity = document.querySelectorAll('.quantity input');
+        // let plusBtn = document.querySelector('.plus-btn');
+        let plusBtn = document.querySelectorAll('.plus-btn');
+        let minusBtn = document.querySelectorAll('.minus-btn');
+        let total = document.querySelectorAll('.tot-price');
+        // let quantityValue = 0;
         let csrftoken = "{{ csrf_token }}"
         // let customer_id = {{ customer }}
 
-        plusBtn.addEventListener('click', function(){
-            console.log('plus');
+        console.log(plusBtn);
 
-            quantityValue++;
-            console.log(quantityValue);
+        for (let i = 0; i < plusBtn.length; i++) {
+            console.log(plusBtn[i]);
+            plusBtn[i].addEventListener('click', function (){
+                let quantityValue = quantity[i].value;
+                console.log('plus');
 
-            quantity.value = quantityValue;
-        })
+                quantityValue++;
+                console.log(quantityValue);
 
-        // for (let i = 0; i < plusBtn.length; i++) {
-        //     plusBtn[i].addEventListener('click', function (){
-        //         console.log('plus');
-        //
-        //         quantityValue++;
-        //         console.log(quantityValue);
-        //
-        //         quantity.value = quantityValue;
-        //     })
-        // }
+                quantity[i].value = quantityValue;
+            })
+        }
 
-        minusBtn.addEventListener('click', function(){
-            console.log('minus');
+        for (let i = 0; i < minusBtn.length; i++) {
+            console.log(minusBtn[i]);
+            minusBtn[i].addEventListener('click', function (){
+                let quantityValue = quantity[i].value;
+                console.log('minus');
 
-            if (quantityValue > 1){
+                if (quantityValue > 1){
                 quantityValue--;
                 console.log(quantityValue);
 
-                quantity.value = quantityValue;
+                quantity[i].value = quantityValue;
             }
-        })
+            })
+        }
 
         /////////// Add to Cart ///////////
 

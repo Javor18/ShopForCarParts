@@ -18,17 +18,17 @@
                 <a href="{% url 'remove_from_wishlist' item.id %}">
                 <button class="trash" data-product="{{ item.product.id }}" data-quantity="{{ item.product.quantity }}" data-action="delete"><i class="fa-solid fa-trash"></i></button>
                 </a>
-                <button data-product="{{ tire.id }}" data-action="add" class="add-to-cart-btn update-cart" type="button">
-                    <p><i class="fa-solid fa-shopping-cart"></i></p>
-                    <p>ADD TO CART</p>
-                </button>
+<!--                <button data-product="{{ tire.id }}" data-action="add" class="add-to-cart-btn update-cart" type="button">-->
+<!--                    <p><i class="fa-solid fa-shopping-cart"></i></p>-->
+<!--                    <p>ADD TO CART</p>-->
+<!--                </button>-->
             </div>
         </div>
 </div>
 
 
 <script>
-     let updateBtns = document.getElementsByClassName('add-to-cart-btn')
+     // let updateBtns = document.getElementsByClassName('add-to-cart-btn')
 
 
             for (let i = 0; i < updateBtns.length; i++) {

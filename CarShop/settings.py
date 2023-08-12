@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'Accounts',
     'Cart',
     'Privacy',
-
+   ' django_filters',
 
     # My Apps
 

@@ -15,9 +15,8 @@ from CarParts.forms import ContactForm
 from django import forms
 from django.urls import reverse_lazy
 from django.conf import settings
-
 from Cart.models import Order, OrderItem
-
+from .filters import ProductFilter
 
 # Create your views here.
 
@@ -157,7 +156,14 @@ def wishlistCreateView(request):
     print('Action:', action)
     print('Product:', tyre)
 
-    wishlist_order, wishlist_created = WishlistItem.objects.get_or_create(user=request.user, product=tyre)
+    print(WishlistItem.objects.all())
+
+    if WishlistItem.objects.filter(user=request.user, product=tyre).exists():
+        wishlist_order = WishlistItem.objects.get(user=request.user, product=tyre)
+    else:
+        wishlist_order = WishlistItem.objects.create(user=request.user, product=tyre)
+
+    # wishlist_order, wishlist_created = WishlistItem.objects.get_or_create(user=request.user, product=tyre)
     print(wishlist_order)
 
     print(action)
@@ -171,3 +177,8 @@ def wishlistCreateView(request):
     print(action)
 
     return JsonResponse({"message": "ok"})
+
+def product_list(request):
+    queryset = Product.objects.all()
+    product_filter = ProductFilter(request.GET, queryset=queryset)
+    return render(request, 'product_list.html', {'filter': product_filter})

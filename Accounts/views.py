@@ -9,7 +9,7 @@ from django.contrib import messages
 from .forms import UserAccountForm
 from Accounts.forms import RegisterUserForm
 from django.shortcuts import render, redirect
-from Accounts.models import Wishlist
+from Accounts.models import WishlistItem
 from CarParts.models import Tyre
 
 
@@ -82,15 +82,20 @@ def view_and_edit_account(request):
     return render(request, 'account.html', {'form': form})
 
 @login_required
+def view_wishlist(request):
+
+    wishlist_items = WishlistItem.objects.filter(user=request.user)
+    return render(request, 'wishlist.html', {'wishlist_items': wishlist_items})
+
+@login_required
 def add_to_wishlist(request, product_id):
     product = Tyre.objects.get(pk=product_id)
-    wishlist, created = Wishlist.objects.get_or_create(user=request.user)
+    wishlist, created = WishlistItem.objects.get_or_create(user=request.user)
     wishlist.products.add(product)
     return redirect('list-parts')  # Change to your product list view
 
 @login_required
-def remove_from_wishlist(request, product_id):
-    product = Tyre.objects.get(pk=product_id)
-    wishlist = Wishlist.objects.get(user=request.user)
-    wishlist.products.remove(product)
+def remove_from_wishlist(request, wishlist_item_id):
+    wishlist_item = WishlistItem.objects.get(user=request.user)
+    wishlist_item.delete()
     return redirect('wishlist')

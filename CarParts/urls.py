@@ -30,6 +30,8 @@ urlpatterns = [
     path('contact-us/', ContactFormView.as_view(), name='contact'),
     path('terms-and-conditions/', TermsAndConditionsView.as_view(), name='terms-and-conditions'),
     path('update_item/', views.updateItem, name='update_item'),
+    path('wishlist_item/', views.wishlistCreateView, name='wishlist_item'),
+
 ]
 
 # send_mail(

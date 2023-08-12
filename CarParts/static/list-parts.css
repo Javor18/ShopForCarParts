@@ -44,7 +44,7 @@
 #top-header ul{
     display: flex;
     flex-direction: row;
-    padding-left: 100px;
+    padding-left: 85px;
 }
 
 #top-header ul li{
@@ -324,6 +324,7 @@
 #main-part{
     display: flex;
     margin-top: 5rem;
+    margin-left: -42px;
 }
 
 #main-right-side{
@@ -481,7 +482,7 @@
 #shop-review li {
     display: flex;
     align-items: center;
-    margin-bottom: 7px;
+    margin-bottom: 40px;
 }
 
 #shop-review img{
@@ -514,7 +515,7 @@
 #shop-review hr{
     width: 16rem;
     margin-right: 57px;
-    margin-bottom: 30px;
+    margin-bottom: 77px;
 }
 
 #price-section ul{
@@ -574,6 +575,7 @@
     border: none;
     background: red;
     color: white;
+    margin-bottom: 30px;
 }
 
 #main-right-side a {
@@ -592,7 +594,7 @@
     background: radial-gradient(circle at -1% 57.5%, rgb(19, 170, 82) 0%, rgb(0, 102, 43) 90%);
     padding-left: 6rem;
     color: white;
-    margin-left: 5.6rem;
+    margin-left: 3rem;
     width: 68rem;
 }
 
@@ -609,4 +611,36 @@
     display: flex;
     align-items: center;
     margin-left: 15rem;
+}
+
+.add-to-cart a {
+    padding: 12px;
+    background: lightgreen;
+    text-decoration: none;
+    color: black;
+    padding-left: 36px;
+    /* display: flex; */
+    /* align-items: center; */
+    text-align: center;
+    padding-right: 24px;
+}
+
+.add-to-cart a:hover{
+    cursor: pointer;
+}
+
+.add-to-cart{
+    margin-right: 23px;
+}
+
+.quantity{
+    display: flex;
+    align-items: center;
+    margin-right: 28px;
+}
+
+.quantity input{
+    width: 4rem;
+    text-align: center;
+    font-size: 20px;
 }

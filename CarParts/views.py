@@ -5,6 +5,8 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, DetailView, FormView
+
+from Accounts.models import WishlistItem
 from CarParts.models import Tyre
 from django.core.mail import send_mail
 from django.shortcuts import render
@@ -133,5 +135,44 @@ def updateItem(request):
             orderItem.delete()
 
     print(action, orderItem.quantity)
+
+    return JsonResponse({"message": "ok"})
+
+
+@csrf_exempt
+def wishlistCreateView(request):
+
+    print("WishlistItem")
+
+    data = json.loads(request.body)
+    # all_data = cartData(request)
+
+    print(data)
+    # print(all_data)
+
+    action = data['action']
+
+
+    tyre_id = int(data['productId'])
+    print("Tyre id -----------")
+    print(tyre_id)
+
+    tyre = Tyre.objects.get(id=tyre_id)
+
+    print('Action:', action)
+    print('Product:', tyre)
+
+    wishlist_order, wishlist_created = WishlistItem.objects.get_or_create(user=request.user, product=tyre)
+    print(wishlist_order)
+
+    print(action)
+
+    print(wishlist_order.id)
+
+    if action == 'delete':
+        wishlist_order.delete()
+
+
+    print(action)
 
     return JsonResponse({"message": "ok"})

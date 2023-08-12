@@ -1,9 +1,26 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'css/wishlist_file.css' %}">
+<!--    <link rel="stylesheet" href="{% static 'css/cart.css' %}">-->
+    <link rel="stylesheet" href="{% static 'list-parts.css' %}">
+{% endblock %}
 {% block content %}
-<h2>Your Wishlist</h2>
-{% for product in wishlist.products.all %}
-    <h3>{{ product.name }}</h3>
-    <a href="{% url 'remove_from_wishlist' product.id %}">Remove</a>
-    <!-- Display other product details -->
+    <h2>Your Wishlist</h2>
+<div class="row">
+    {% for item in wishlist_items %}
+        <div class="cart-row">
+            <div style="flex:2"><img class="wishlist-product-img" src="{% static 'images/no-tyre.jpg' %}"></div>
+            <div style="flex:2"><p>{{item.product}}</p></div>
+            <div style="flex:1"><p>$ {{item.product.price|floatformat:2}}</p></div>
+            <div style="flex:1"><p class="quantity">{{item.quantity}}</p></div>
+            <div style="flex:1">
+                <a href="{% url 'remove_from_wishlist' item.id %}">
+                <button class="trash" data-product="{{ item.product.id }}" data-quantity="{{ item.product.quantity }}" data-action="delete"><i class="fa-solid fa-trash"></i></button>
+                </a>
+            </div>
+        </div>
+</div>
+
 {% endfor %}
 {% endblock %}

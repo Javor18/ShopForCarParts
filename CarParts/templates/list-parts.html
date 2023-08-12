@@ -297,10 +297,13 @@
                 </li>
 
                 <div class="add-to-cart">
-                        <button data-product="{{ tire.id }}" data-action="add" class="add-to-cart-btn update-cart" type="button">                        <p><i class="fa-solid fa-shopping-cart"></i></p>
+                        <button data-product="{{ tire.id }}" data-action="add" class="add-to-cart-btn update-cart" type="button">
+                            <p><i class="fa-solid fa-shopping-cart"></i></p>
                             <p>ADD TO CART</p>
                         </button>
-                        <a href="{% url 'add_to_wishlist' tire.id %}">Add to Wishlist</a>
+                        <button data-product="{{ tire.id }}" data-action="add" class="add-to-wishlist-btn" type="button">
+                            <p>Add to Wishlist</p>
+                        </button>
                 </div>
 
             </ul>
@@ -379,6 +382,52 @@
 
 
                     var url = '/update_item/'
+
+                    fetch(url, {
+                        method:'POST',
+                        headers:{
+                            'Content-Type':'application/json',
+                            'X-CSRFToken':csrftoken,
+                        },
+                        body:JSON.stringify({'productId':productId, 'action':action, 'quantity': quantity})
+                    })
+                        .then((response) => {
+                            return response.json();
+                        })
+                        .then((data) => {
+                            location.reload()
+                        });
+                }
+
+
+                    /////////// Add to Wishlist ///////////
+
+        // let user = '{{request.user}}'
+
+            let WishlistUpdateBtns = document.getElementsByClassName('add-to-wishlist-btn')
+
+
+            for (let i = 0; i < WishlistUpdateBtns.length; i++) {
+
+                WishlistUpdateBtns[i].addEventListener('click', function (){
+                    let productId = this.dataset.product
+                    let action = this.dataset.action
+                    let quantity = document.getElementById('quantity').value
+                    console.log('productId:', productId, 'Action:', action, 'Quantity:', quantity)
+
+                    // console.log('User:', user)
+
+                    updateUserOrder(productId, action, quantity)
+                })
+            }
+
+            function updateUserOrder(productId, action, quantity){
+
+                    console.log('User is authenticated, sending data...')
+                    console.log('csrf:', csrftoken)
+
+
+                    var url = '/wishlist_item/'
 
                     fetch(url, {
                         method:'POST',

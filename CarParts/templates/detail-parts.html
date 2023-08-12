@@ -146,6 +146,7 @@
                         <button data-product="{{ tire.id }}" data-action="add" class="add-to-cart-btn update-cart" type="button">                        <p><i class="fa-solid fa-shopping-cart"></i></p>
                         <p>ADD TO CART</p>
                         </button>
+                        <a href="{% url 'add_to_wishlist' tire.id %}">Add to Wishlist</a>
                     </div>
 
             </ul>

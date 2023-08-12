@@ -32,7 +32,9 @@
                         <i class="fa-solid fa-user"></i>
                         {% if user.is_authenticated %}
                             <div class="logout-profile">
-                                <p>{{user.first_name}}</p>
+                                <a class="edit-account-link" href="{% url 'account' %}">
+                                    <p>{{user.first_name}}</p>
+                                </a>
                                 <p><a class="sign-type" href="{% url 'logout_user' %}">Logout</a><p>
                             </div>
 
@@ -118,6 +120,7 @@
         <p><a class="contact-link" href="{% url 'contact' %}">Contact us</a></p>
         <p><a class="terms-and-conditions-link" href="{% url 'terms-and-conditions' %}">Terms and Conditions</a></p>
         <p><a class="edit-account-link" href="{% url 'account' %}">Edit account</a></p>
+        <p><a class="wishlist-link" href="{% url 'wishlist' %}">Wishlist</a></p>
     </section>
 </body>
 </html>

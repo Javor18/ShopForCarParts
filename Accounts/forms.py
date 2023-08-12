@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django import forms
 
+from Accounts.models import Customer
+
 UserModel = get_user_model()
 
 
@@ -33,12 +35,12 @@ class RegisterUserForm(auth_forms.UserCreationForm):
 
         email = self.cleaned_data['email']
         try:
-            email = User.objects.exclude(pk=self.instance.pk).get(email=email)
-        except User.DoesNotExist:
+            email = Customer.objects.exclude(pk=self.instance.pk).get(email=email)
+        except Customer.DoesNotExist:
             return email
         raise ValidationError(u'Email "%s" is already in use.' % email)
 
 class UserAccountForm(forms.ModelForm):
     class Meta:
-        model = User
+        model = UserModel
         fields = ['username', 'email', 'first_name', 'last_name']

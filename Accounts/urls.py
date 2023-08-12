@@ -30,7 +30,7 @@ urlpatterns = [
     path('logout/', views.LogoutUserView.as_view(), name='logout_user'),
     path('', views.UsersListView.as_view(), name='users_list'),
     path('accounts/', views.view_and_edit_account, name='account'),
-    path('wishlist/', views.Wishlist, name='wishlist'),
-    path('add-to-wishlist/<int:product_id>/', views.add_to_wishlist, name='add_to_wishlist'),
-    path('remove-from-wishlist/<int:product_id>/', views.remove_from_wishlist, name='remove_from_wishlist'),
+    path('wishlist/', views.view_wishlist, name='wishlist'),
+    path('add-to-wishlist/<int:wishlist_item_id>/', views.add_to_wishlist, name='add_to_wishlist'),
+    path('remove-from-wishlist/<int:wishlist_item_id>/', views.remove_from_wishlist, name='remove_from_wishlist'),
 ]

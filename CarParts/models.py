@@ -36,6 +36,7 @@ class Tyre(ProductMixin, models.Model):
     rim_protection = models.BooleanField()
     run_flat = models.BooleanField()
 
+
     def __str__(self):
         return f"{self.brand} {self.model}"
 

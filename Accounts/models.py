@@ -14,7 +14,7 @@ from Accounts import apps
 
 class Customer(AbstractUser):
 
-    phone = models.CharField(max_length=200, null=True)
+    phone = models.CharField(max_length=200, null=True, blank=True)
 
 
 UserModel = get_user_model()

@@ -1,27 +1,19 @@
 import json
 
-from django.core.mail import send_mail
 from django.http import JsonResponse
-from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import ListView, DetailView, FormView
 
 from Accounts.models import WishlistItem
 from CarParts.models import Tyre
 from django.core.mail import send_mail
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, TemplateView, FormView
-from CarParts.forms import ContactForm, SearchBarForm
-from django import forms
+from CarParts.forms import ContactForm
 from django.urls import reverse_lazy
 from django.conf import settings
 from Cart.models import Order, OrderItem
-from .filters import ProductFilter
 
 # Create your views here.
-
-# class Test(TemplateView):
-#     template_name = 'test.html'
 
 class TyreListView(ListView):
     model = Tyre
@@ -184,8 +176,3 @@ def wishlistCreateView(request):
     print(action)
 
     return JsonResponse({"message": "ok"})
-
-def product_list(request):
-    queryset = Tyre.objects.all()
-    product_filter = ProductFilter(request.GET, queryset=queryset)
-    return render(request, 'product_list.html', {'filter': product_filter})

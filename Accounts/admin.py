@@ -5,6 +5,13 @@ from django.contrib import admin
 from Accounts.models import Customer
 from Accounts.models import WishlistItem
 
+class CustomerAdmin(admin.ModelAdmin):
 
-admin.site.register(Customer)
+    list_display = ['email','username', 'is_staff']
+
+    class Meta:
+        model = Customer
+
+
+admin.site.register(Customer, CustomerAdmin)
 admin.site.register(WishlistItem)

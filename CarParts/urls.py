@@ -33,10 +33,3 @@ urlpatterns = [
     path('wishlist_item/', views.wishlistCreateView, name='wishlist_item'),
 
 ]
-
-# send_mail(
-#             subject='Registration successful',
-#             message='It works!',
-#             from_email='info@carshop.com',
-#             recipient_list=('jdmirchev@gmail.com', ),
-#         )

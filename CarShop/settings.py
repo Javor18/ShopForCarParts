@@ -47,8 +47,6 @@ INSTALLED_APPS = [
     'bootstrap4'
 
     # My Apps
-
-    # "CarParts.apps.CarpartsConfig",
 ]
 
 MIDDLEWARE = [
@@ -85,13 +83,6 @@ WSGI_APPLICATION = 'CarShop.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 DATABASES = {
     'default': {
@@ -161,7 +152,6 @@ REGISTER_REDIRECT_URL = reverse_lazy('main')
 AUTH_USER_MODEL = 'Accounts.Customer'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_FILE_PATH = "CarParts/app-messages"
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

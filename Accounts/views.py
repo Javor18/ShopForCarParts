@@ -27,8 +27,6 @@ class RegisterUserView(views.CreateView):
     def form_valid(self, form):
         result = super().form_valid(form)
 
-        # send_successfull_registration_email(None)
-
         login(self.request, self.object)
 
         return result

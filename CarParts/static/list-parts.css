@@ -443,6 +443,7 @@
 .left-side{
     border: 1px solid lightgray;
     margin: 26px;
+    display: flex;
 }
 
 #payment-methods li:nth-child(1){
@@ -672,4 +673,8 @@
     margin-left: 25rem;
     margin-top: 40px;
     margin-bottom: 60px;
+}
+
+#price-section{
+    margin-left: 65px;
 }

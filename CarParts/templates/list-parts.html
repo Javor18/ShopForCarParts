@@ -152,6 +152,10 @@
             </section>
         </section>
 
+        {% if not tyres %}
+            <h2>No tyres found</h2>
+        {% endif %}
+
         <section id="main-right-side">
             {% for tire in tyres %}
             <a href="{% url 'tyre_detail' tire.id %}">
@@ -260,6 +264,7 @@
 
                                             </ul>
                                         </div>
+
                             </li>
                         </ul>
                     </div>
@@ -285,6 +290,7 @@
                     </div>
                 </li>
 
+
                 <div class="add-to-cart">
                         <button data-product="{{ tire.id }}" data-action="add" class="add-to-cart-btn update-cart" type="button">
                             <p><i class="fa-solid fa-shopping-cart"></i></p>
@@ -300,33 +306,35 @@
                 </div>
             </div>
             {% endfor %}
-            <div class="pagination">
-                <div class="pagination-pages">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            {% if tyres %}
+                <div class="pagination">
+                    <div class="pagination-pages">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </div>
+
+                    <ul class="pagination-links">
+                        {% if page_obj.has_previous %}
+                            <li>
+                                <a href="?page=1" type="button">&laquo; First</a>
+                            </li>
+
+                            <li>
+                                <a href="?page={{ page_obj.previous_page_number }}" type="button">Previous</a>
+                            </li>
+                        {% endif %}
+
+                        {% if page_obj.has_next %}
+                            <li>
+                                <a href="?page={{ page_obj.next_page_number }}" type="button">Next</a>
+                            </li>
+
+                            <li>
+                                <a href="?page={{ page_obj.paginator.num_pages }}" type="button">Last &raquo;</a>
+                            </li>
+                        {% endif %}
+                    </ul>
                 </div>
-
-                <ul class="pagination-links">
-                    {% if page_obj.has_previous %}
-                        <li>
-                            <a href="?page=1" type="button">&laquo; First</a>
-                        </li>
-
-                        <li>
-                            <a href="?page={{ page_obj.previous_page_number }}" type="button">Previous</a>
-                        </li>
-                    {% endif %}
-
-                    {% if page_obj.has_next %}
-                        <li>
-                            <a href="?page={{ page_obj.next_page_number }}" type="button">Next</a>
-                        </li>
-
-                        <li>
-                            <a href="?page={{ page_obj.paginator.num_pages }}" type="button">Last &raquo;</a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </div>
+            {% endif %}
         </section>
     </section>
 
@@ -346,13 +354,11 @@
         }
 
         let quantity = document.querySelectorAll('.quantity input');
-        // let plusBtn = document.querySelector('.plus-btn');
+        console.log(quantity)
         let plusBtn = document.querySelectorAll('.plus-btn');
         let minusBtn = document.querySelectorAll('.minus-btn');
         let total = document.querySelectorAll('.tot-price');
-        // let quantityValue = 0;
         let csrftoken = "{{ csrf_token }}"
-        // let customer_id = {{ customer }}
 
         console.log(plusBtn);
 
@@ -360,12 +366,14 @@
             console.log(plusBtn[i]);
             plusBtn[i].addEventListener('click', function (){
                 let quantityValue = quantity[i].value;
+                {#let quantityValue = quantity.value;#}
                 console.log('plus');
 
                 quantityValue++;
                 console.log(quantityValue);
 
                 quantity[i].value = quantityValue;
+                {#quantity.value = quantityValue;#}
             })
         }
 

@@ -329,7 +329,7 @@
                             </li>
 
                             <li>
-                                <a href="?page={{ page_obj.paginator.num_pages }}" type="button">Last &raquo;</a>
+                                <a href="?page={{ page_obj.paginator.num_pages }}" type="button" >Last &raquo;</a>
                             </li>
                         {% endif %}
                     </ul>
@@ -354,7 +354,6 @@
         }
 
         let quantity = document.querySelectorAll('.quantity input');
-        console.log(quantity)
         let plusBtn = document.querySelectorAll('.plus-btn');
         let minusBtn = document.querySelectorAll('.minus-btn');
         let total = document.querySelectorAll('.tot-price');
@@ -373,7 +372,7 @@
                 console.log(quantityValue);
 
                 quantity[i].value = quantityValue;
-                {#quantity.value = quantityValue;#}
+
             })
         }
 

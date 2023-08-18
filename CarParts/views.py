@@ -29,6 +29,12 @@ class TyreListView(ListView):
         else:
             return Tyre.objects.all()
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tire_search'] = self.request.GET.get('search')
+
+        return context
+
 
 
 class TyreDetailView(DetailView):
@@ -155,7 +161,11 @@ def wishlistCreateView(request):
     print('Action:', action)
     print('Product:', tyre)
 
-    print(WishlistItem.objects.all())
+    print(WishlistItem.objects.values)
+
+    print('*****')
+
+    print(tyre.__dict__)
 
     if WishlistItem.objects.filter(user=request.user, product=tyre).exists():
         wishlist_order = WishlistItem.objects.get(user=request.user, product=tyre)

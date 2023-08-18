@@ -285,7 +285,7 @@
                 <li>
                     <div class="quantity">
                             <button class="plus-btn"><i class="fa-solid fa-arrow-right"></i></button>
-                            <input id="quantity" type="text" name="name" value="1" readonly>
+                            <input id="quantity" class="quantity-input" type="text" name="name" value="1" readonly>
                             <button class="minus-btn"><i class="fa-solid fa-arrow-left"></i></button>
                     </div>
                 </li>
@@ -315,21 +315,21 @@
                     <ul class="pagination-links">
                         {% if page_obj.has_previous %}
                             <li>
-                                <a href="?page=1" type="button">&laquo; First</a>
+                                <a href="?page=1{% if tire_search is not None %}&search={{ tire_search }}{% endif %}" type="button">&laquo; First</a>
                             </li>
 
                             <li>
-                                <a href="?page={{ page_obj.previous_page_number }}" type="button">Previous</a>
+                                <a href="?page={{ page_obj.previous_page_number }}{% if tire_search is not None %}&search={{ tire_search }}{% endif %}" type="button">Previous</a>
                             </li>
                         {% endif %}
 
                         {% if page_obj.has_next %}
                             <li>
-                                <a href="?page={{ page_obj.next_page_number }}" type="button">Next</a>
+                                <a href="?page={{ page_obj.next_page_number }}{% if tire_search is not None %}&search={{ tire_search }}{% endif %}" type="button">Next</a>
                             </li>
 
                             <li>
-                                <a href="?page={{ page_obj.paginator.num_pages }}" type="button" >Last &raquo;</a>
+                                <a href="?page={{ page_obj.paginator.num_pages }}{% if tire_search is not None %}&search={{ tire_search }}{% endif %}" type="button" >Last &raquo;</a>
                             </li>
                         {% endif %}
                     </ul>
@@ -364,8 +364,12 @@
         for (let i = 0; i < plusBtn.length; i++) {
             console.log(plusBtn[i]);
             plusBtn[i].addEventListener('click', function (){
-                let quantityValue = quantity[i].value;
-                {#let quantityValue = quantity.value;#}
+                let quantityValue = parseInt(quantity[i].value);
+
+                console.log('*******')
+
+                console.log(quantityValue);
+
                 console.log('plus');
 
                 quantityValue++;
@@ -375,6 +379,7 @@
 
             })
         }
+
 
         for (let i = 0; i < minusBtn.length; i++) {
             console.log(minusBtn[i]);
@@ -403,7 +408,13 @@
                 updateBtns[i].addEventListener('click', function (){
                     let productId = this.dataset.product
                     let action = this.dataset.action
-                    let quantity = document.getElementById('quantity').value
+                    let quantities = document.getElementsByClassName('quantity-input')
+
+                    let quantity = quantities[i].value
+
+                    console.log('current quantity for the row')
+                    console.log(quantity);
+
                     console.log('productId:', productId, 'Action:', action, 'Quantity:', quantity)
 
                     // console.log('User:', user)
@@ -413,6 +424,10 @@
             }
 
             function updateUserOrder(productId, action, quantity){
+
+                    console.log(quantity);
+
+                    console.log('passing by update user order')
 
                     console.log('User is authenticated, sending data...')
                     console.log('csrf:', csrftoken)
@@ -439,8 +454,6 @@
 
                     /////////// Add to Wishlist ///////////
 
-        // let user = '{{request.user}}'
-
             let WishlistUpdateBtns = document.getElementsByClassName('add-to-wishlist-btn')
 
 
@@ -459,6 +472,8 @@
 
                     console.log('User is authenticated, sending data...')
                     console.log('csrf:', csrftoken)
+
+                    console.log('passing wishlist view')
 
 
                     var url = '/wishlist_item/'

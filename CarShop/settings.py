@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'Accounts',
     'Cart',
     'Privacy',
-    'bootstrap4'
+    'Payment',
+    'bootstrap4',
 
     # My Apps
 ]

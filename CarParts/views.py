@@ -1,5 +1,5 @@
 import json
-
+import pdb
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
@@ -118,7 +118,10 @@ def updateItem(request):
 
     order, created = Order.objects.get_or_create(customer=request.user, status="DRAFT")
     print(order)
-    orderItem, created = OrderItem.objects.get_or_create(order=order, product=tyre)
+
+    # pdb.set_trace()
+
+    orderItem, created = OrderItem.objects.get_or_create(order=order, product=tyre_id)
 
     print(action)
 

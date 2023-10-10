@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-rmo66qo2rvmz%gs_7vg3!t=kgmw@10)dd)pden30zu3ulo86=#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1',
+                 "localhost"]
 
 
 # Application definition
@@ -46,6 +47,8 @@ INSTALLED_APPS = [
     'Privacy',
     'Payment',
     'bootstrap4',
+    "corsheaders",
+
 
     # My Apps
 ]
@@ -58,6 +61,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'CarShop.urls'
@@ -159,3 +164,11 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'jdmirchev@gmail.com'
 EMAIL_HOST_PASSWORD = 'xnyccveailjxvfcr'
 
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8000",
+]
+
+# Paypal Settings
+
+CLIENT_ID = "ASHX5BJIYPWNV0Ku1jWQ1VMXLERW0fs0382ElKTMCyLW7OQ0Xvvf3beWZgfHZfu0HnJueFTN6a-VHZaB"
+APP_SECRET = "EIYLsflSB5A0Lxygy9KUyAU9iKm6qUo4KTO6XUejeP2217NBEHjDsYVyijYNt-VB93HCUJTZOVv5VZKI"

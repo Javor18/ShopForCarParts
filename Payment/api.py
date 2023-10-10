@@ -1,14 +1,19 @@
 import json
+import uuid
 
 import requests
 
 from CarShop import settings
+from Cart.models import Order
 
 
 def create_order(token):
+
+    last_order = Order.objects.last()
+
     headers = {
         'Content-Type': 'application/json',
-        'PayPal-Request-Id': '7b92603e-77ed-4896-8e78-5dea2050476a',
+        'PayPal-Request-Id': str(uuid.uuid4()),
         'Authorization': f'Bearer {token}',
     }
 
@@ -19,7 +24,7 @@ def create_order(token):
                 "reference_id": "a9f80740-38f0-11e8-b467-0ed5f89f718s",
                 "amount": {
                     "currency_code": "USD",
-                    "value": "110.00"
+                    "value": last_order.price
                 },
                 "payment_source": {
                     "paypal": {

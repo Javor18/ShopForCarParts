@@ -21,7 +21,7 @@
                         <th><h5>Items: <strong>{{ total_items }}</strong></h5></th>
 						<th><h5>Total:<strong>${{total_price|floatformat:2}}</strong></h5></th>
 						<th>
-                            <button style="float:right; margin:5px;" id="show-img-btn" class="btn btn-success">Pay Now</button>
+                            <a style="float:right; margin:5px;" id="show-img-btn" class="btn btn-success" href="/pay">Pay Now></a>
                             <div id="img-overlay">
                             <img src="{% static 'images/card-payment.png' %}" alt="">
                         </div>

@@ -3,6 +3,7 @@ import uuid
 
 import requests
 
+import Cart.models
 from CarShop import settings
 from Cart.models import Order
 
@@ -24,13 +25,13 @@ def create_order(token):
                 "reference_id": "a9f80740-38f0-11e8-b467-0ed5f89f718s",
                 "amount": {
                     "currency_code": "USD",
-                    "value": last_order.price
+                    "value": last_order.get_total_price
                 },
                 "payment_source": {
                     "paypal": {
                         "experience_context": {
                             "payment_method_preference": "IMMEDIATE_PAYMENT_REQUIRED",
-                            "payment_method_selected": "PAYPAL", "brand_name": "EXAMPLE INC",
+                            "payment_method_selected": "PAYPAL", "brand_name": "CarPartsShop",
                             "locale": "en-US", "landing_page": "LOGIN",
                             "shipping_preference": "SET_PROVIDED_ADDRESS", "user_action": "PAY_NOW",
                             "return_url": "http://localhost:8000/pay/payment-succeeded",

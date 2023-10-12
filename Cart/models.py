@@ -28,6 +28,16 @@ class Order(models.Model):
     def __str__(self):
         return str(self.id)
 
+    @property
+    def get_total_price(self):
+
+        total_price = 0
+
+        for product in self.orderitem_set.all():
+
+            total_price += product.get_total
+
+        return str(total_price)
 
 class OrderItem(models.Model):
     product = models.ForeignKey(Tyre, on_delete=models.SET_NULL, null=True)

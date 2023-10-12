@@ -121,7 +121,7 @@ def updateItem(request):
 
     # pdb.set_trace()
 
-    orderItem, created = OrderItem.objects.get_or_create(order=order, product=tyre_id)
+    orderItem, created = OrderItem.objects.get_or_create(order=order, product=tyre, product_price=tyre.price)
 
     print(action)
 

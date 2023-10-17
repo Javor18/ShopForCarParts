@@ -21,22 +21,7 @@
                         <th><h5>Items: <strong>{{ total_items }}</strong></h5></th>
 						<th><h5>Total:<strong>${{total_price|floatformat:2}}</strong></h5></th>
 						<th>
-                            <a style="float:right; margin:5px;" id="show-img-btn" class="btn btn-success" href="/pay">Pay Now></a>
-                            <div id="img-overlay">
-                            <img src="{% static 'images/card-payment.png' %}" alt="">
-                        </div>
-
-                        <div id="img-overlay-1">
-                            <h1>Please collect your order</h1>
-                            <img src="{% static 'images/checked.png' %}">
-                        </div>
-
-                        <div id="loading-dots">
-                            <h1>Loading</h1>
-                            <div class="dots">
-                            <h1 class="dot one">.</h1><h1 class="dot two">.</h1><h1 class="dot three">.</h1>
-                            </div>
-                        </div>
+                            <a style="float:right; margin:5px;" id="show-img-btn" class="btn btn-success" href="/pay">Pay Now</a>
 						</th>
 					</tr>
 				</table>

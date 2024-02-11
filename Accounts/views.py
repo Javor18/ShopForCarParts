@@ -13,9 +13,8 @@ from Accounts.models import WishlistItem
 from CarParts.models import Tyre
 
 
-
-
 UserModel = get_user_model()
+
 
 class RegisterUserView(views.CreateView):
     template_name = 'register.html'
